@@ -83,6 +83,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Membership WWF 40 MVC regis
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Host WF 45", "Host WF 45", "{7DC6D3C5-7F50-4C1D-9586-16CEF9F16A91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc.Wwf.Membership.Registration.Activities", "Mvc.Wwf.Membership.Registration.Activities\Mvc.Wwf.Membership.Registration.Activities.csproj", "{344A344C-0084-4FF1-BD2C-876B074E92BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -363,6 +365,18 @@ Global
 		{EDD3D1F8-7422-4ED8-A1A8-3D1006902267}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{EDD3D1F8-7422-4ED8-A1A8-3D1006902267}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{EDD3D1F8-7422-4ED8-A1A8-3D1006902267}.Release|x86.ActiveCfg = Release|Any CPU
+		{344A344C-0084-4FF1-BD2C-876B074E92BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{344A344C-0084-4FF1-BD2C-876B074E92BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{344A344C-0084-4FF1-BD2C-876B074E92BB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{344A344C-0084-4FF1-BD2C-876B074E92BB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{344A344C-0084-4FF1-BD2C-876B074E92BB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{344A344C-0084-4FF1-BD2C-876B074E92BB}.Debug|x86.Build.0 = Debug|Any CPU
+		{344A344C-0084-4FF1-BD2C-876B074E92BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{344A344C-0084-4FF1-BD2C-876B074E92BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{344A344C-0084-4FF1-BD2C-876B074E92BB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{344A344C-0084-4FF1-BD2C-876B074E92BB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{344A344C-0084-4FF1-BD2C-876B074E92BB}.Release|x86.ActiveCfg = Release|Any CPU
+		{344A344C-0084-4FF1-BD2C-876B074E92BB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -397,5 +411,6 @@ Global
 		{EDD3D1F8-7422-4ED8-A1A8-3D1006902267} = {1468D2A5-8B56-4A64-8F64-A5DAF1023EA7}
 		{8D0DDB05-B228-444B-8E06-B3714D926751} = {8B1C46CF-7C18-4187-BA33-440E01F1B380}
 		{7DC6D3C5-7F50-4C1D-9586-16CEF9F16A91} = {8B1C46CF-7C18-4187-BA33-440E01F1B380}
+		{344A344C-0084-4FF1-BD2C-876B074E92BB} = {8D0DDB05-B228-444B-8E06-B3714D926751}
 	EndGlobalSection
 EndGlobal
