@@ -1,0 +1,87 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="AppraisalService.WCF.AppraisalService" %>
+
+namespace AppraisalService.WCF
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Runtime.Serialization;
+    using System.ServiceModel;
+    using System.Text;
+    using BusinessEntities;
+
+    
+    [ServiceContract]
+    public class AppraisalService
+    {
+        ClaimRepository claimRepository = new ClaimRepository();
+
+
+        [OperationContract]
+        public List<Claim> FindAllClaims()
+        {
+            return claimRepository.FindAllClaims().ToList<Claim>();
+        }
+
+
+        [OperationContract]
+        public List<Claim> FindPendingClaims()
+        {
+            return claimRepository.FindPendingClaims().ToList<Claim>();
+        }
+
+        [OperationContract]
+        public Claim GetLastClaim()
+        {
+            return claimRepository.GetLastClaim();
+        }
+
+        [OperationContract]
+        public Claim GetClaim(int claimId)
+        {
+            return claimRepository.GetClaim(claimId);
+        }
+
+
+        [OperationContract]
+        public string Save(Claim claim)
+        {
+            Console.WriteLine("{0}: The claim # {1} is being saved in the backend system.",
+                DateTime.Now.ToShortTimeString(), claim.ClaimId);
+
+            try
+            {
+                Claim originalClaim = claimRepository.GetClaim(claim.ClaimId);
+
+                //Update the claim
+                originalClaim.AccidentId = originalClaim.AccidentId;
+                originalClaim.Accidents.FName = claim.Accidents.FName;
+                originalClaim.Accidents.LName = claim.Accidents.LName;
+                originalClaim.Accidents.Address = claim.Accidents.Address;
+                originalClaim.Accidents.City = claim.Accidents.City;
+                originalClaim.Accidents.ContactPhone = claim.Accidents.ContactPhone;
+                originalClaim.Accidents.State = claim.Accidents.State;
+                originalClaim.Accidents.Zip = claim.Accidents.Zip;
+                originalClaim.Accidents.Latitude = claim.Accidents.Latitude;
+                originalClaim.Accidents.Longitude = claim.Accidents.Longitude;
+                originalClaim.Description = claim.Description;
+                originalClaim.DateCreated = claim.DateCreated;
+                originalClaim.Status = claim.Status;
+                originalClaim.RentalCar = claim.RentalCar;
+
+
+                claimRepository.Save();
+
+                Console.WriteLine("{0}: The claim # {1} has been saved.",
+                    DateTime.Now.ToShortTimeString(), claim.ClaimId);
+
+                return "Saved";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+        }
+    }
+}

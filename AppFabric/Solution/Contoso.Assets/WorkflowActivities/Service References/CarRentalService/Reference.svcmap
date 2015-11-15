@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f4fda185-4170-4490-9ebe-2ec015bcfeea" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ArrayList" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:90/CarRentalService.WCF/CarRentalService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CarRentalService.xsd" MetadataType="Schema" ID="a537a6bf-d043-4992-8b20-d8e4d8000dda" SourceId="1" SourceUrl="http://localhost:90/CarRentalService.WCF/CarRentalService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CarRentalService.wsdl" MetadataType="Wsdl" ID="3d58bd10-6905-4423-b6b6-81b586baa5db" SourceId="1" SourceUrl="http://localhost:90/CarRentalService.WCF/CarRentalService.svc?wsdl" />
+    <MetadataFile FileName="CarRentalService1.xsd" MetadataType="Schema" ID="1cc8d1fe-03e0-4c89-bb2d-5c91d5ec1064" SourceId="1" SourceUrl="http://localhost:90/CarRentalService.WCF/CarRentalService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CarRentalService.disco" MetadataType="Disco" ID="4793bd42-ff2a-431e-a111-018d2ad59999" SourceId="1" SourceUrl="http://localhost:90/CarRentalService.WCF/CarRentalService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

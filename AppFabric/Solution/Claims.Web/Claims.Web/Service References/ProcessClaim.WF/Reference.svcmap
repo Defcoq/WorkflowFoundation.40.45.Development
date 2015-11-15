@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ff24ddc3-1e34-48e6-b74a-5537ea9e8e7e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:90/ProcessClaimService.WF/ProcessClaimService.xamlx" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ProcessClaimService.disco" MetadataType="Disco" ID="777b5c1f-c95b-4745-a987-934b07846570" SourceId="1" SourceUrl="http://localhost:90/ProcessClaimService.WF/ProcessClaimService.xamlx?disco" />
+    <MetadataFile FileName="ProcessClaimService.xsd" MetadataType="Schema" ID="d3b22cce-11f1-4d9c-8c0d-4a7f4703bf42" SourceId="1" SourceUrl="http://localhost:90/ProcessClaimService.WF/ProcessClaimService.xamlx?xsd=xsd1" />
+    <MetadataFile FileName="ProcessClaimService1.xsd" MetadataType="Schema" ID="31bbf6ec-e57b-4b33-bc38-6a992dbcc9ac" SourceId="1" SourceUrl="http://localhost:90/ProcessClaimService.WF/ProcessClaimService.xamlx?xsd=xsd0" />
+    <MetadataFile FileName="ProcessClaimService.wsdl" MetadataType="Wsdl" ID="ab3b5a20-4f2c-44cd-94dd-b4686bdc9447" SourceId="1" SourceUrl="http://localhost:90/ProcessClaimService.WF/ProcessClaimService.xamlx?wsdl" />
+    <MetadataFile FileName="ProcessClaimService2.xsd" MetadataType="Schema" ID="7dbb5a2d-3e0c-4f5a-a949-a4b7c5fda203" SourceId="1" SourceUrl="http://localhost:90/ProcessClaimService.WF/ProcessClaimService.xamlx?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

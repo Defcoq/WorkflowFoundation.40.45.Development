@@ -1,0 +1,22 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="CarRentalService.WCF.CarRentalService" %>
+
+namespace CarRentalService.WCF
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Runtime.Serialization;
+    using System.ServiceModel;
+    using System.Text;
+
+    [ServiceContract]
+    public class CarRentalService
+    {
+        [OperationContract]
+        public string FindRentalCar(int claimId)
+        {
+            Console.WriteLine("Rental car has been successfully reserved for the claim ID: {0}.", claimId);
+            return "A rental car has been reserved.";
+        }
+    }
+}

@@ -1,0 +1,67 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="PROWF40.CH08.Host.Com.BookMark.ActivityLibrary.CH15.Activity1" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="PROWF40.CH08.Host.Com.BookMark.ActivityLibrary.CH15.Activity1_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:local="clr-namespace:PROWF40.CH08.Host.Com.BookMark.ActivityLibrary.CH15.Activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PROWF40.CH08.Host.Com.BookMark.ActivityLibrary</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <local:CalcShipping ShipVia="{x:Null}" sap2010:WorkflowViewState.IdRef="CalcShipping_1" Weight="10">
+      <local:CalcShipping.OrderTotal>
+        <InArgument x:TypeArguments="x:Decimal">
+          <mca:CSharpValue x:TypeArguments="x:Decimal">20</mca:CSharpValue>
+        </InArgument>
+      </local:CalcShipping.OrderTotal>
+    </local:CalcShipping>
+    <local:MyWhile Body="{x:Null}" Condition="{x:Null}" sap2010:WorkflowViewState.IdRef="MyWhile_1" />
+    <sads:DebugSymbol.Symbol>d44BQzpcV29ya3NhcGNlXHJlcG9zXGRvdC5uZXQgZGV2ZWxvcG1lbnRcV29ya2Zsb3dGb3VuZGF0aW9uLjQwLjQ1LkRldmVsb3BtZW50XFBST1dGNDAuQ0gwOC5Ib3N0LkNvbS5Cb29rTWFyay5BY3Rpdml0eUxpYnJhcnlcQ0gxNVxBY3Rpdml0eTEueGFtbAUqAzQOAgEBKwUxGgIBAzIFMmcCAQIrZCtoAgEFLgsuTAIBBA==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="CalcShipping_1" sap:VirtualizedContainerService.HintSize="232,177.6" />
+      <sap2010:ViewStateData Id="MyWhile_1" sap:VirtualizedContainerService.HintSize="232,121.6" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="254.4,464">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PROWF40.CH08.Host.Com.BookMark.ActivityLibrary.CH15.Activity1_1" sap:VirtualizedContainerService.HintSize="294.4,544" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

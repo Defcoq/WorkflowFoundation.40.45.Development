@@ -1,0 +1,68 @@
+﻿<Window x:Class="MVVMApp_WFBasedBusinessRules.OrderView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:MVVM.Packpub.OrderEntry.UI.WPF.ViewModel"
+    Title="MVVM Survival Guide" Height="300" Width="531">
+    <Window.DataContext>
+        <local:OrderViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38*" />
+            <RowDefinition Height="32*" />
+            <RowDefinition Height="30*" />
+            <RowDefinition Height="161*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="108*" />
+            <ColumnDefinition Width="401*" />
+        </Grid.ColumnDefinitions>
+        <Label Content="Customer" Height="25" HorizontalAlignment="Left" 
+               Margin="12,8,0,0" Name="lblCustomer" VerticalAlignment="Top" 
+               Width="93" />
+        <TextBox Height="26" HorizontalAlignment="Left" Margin="3,10,0,0" 
+                 Name="txtCustomer" VerticalAlignment="Top" Width="390"
+                 Text="{Binding CustomerName}" Grid.Column="1" />
+        <Label Content="Product" Height="25" HorizontalAlignment="Left" 
+               Margin="12,1,0,0" 
+               Name="lblProduct" VerticalAlignment="Top" Width="93"
+               Grid.Row="1" />
+        <TextBox Height="26" HorizontalAlignment="Left" Margin="3,3,0,0" 
+                 Name="txtProduct" 
+                 VerticalAlignment="Top" Width="390"
+                 Text="{Binding ProductName}" Grid.Column="1" Grid.Row="1" />
+        <Label Content="Quantity" Height="25" HorizontalAlignment="Left"
+               Margin="12,0,0,0"
+               Name="lblQuantity" VerticalAlignment="Top" Width="93"
+               Grid.Row="2" />
+        <TextBox Height="26" HorizontalAlignment="Left" Margin="3,2,0,0"
+                 Name="txtQuantity" VerticalAlignment="Top" Width="390"
+                 Text="{Binding ProductQuantity}" Grid.Column="1" 
+                 Grid.Row="2" />
+        <GroupBox Header="Validation Errors" Height="111" 
+                  HorizontalAlignment="Left" Margin="3,38,0,0" 
+                  Name="grpBoxValidationSummary" VerticalAlignment="Top"
+                  Width="389" Grid.Column="1" Grid.Row="3">
+            <GroupBox.Style>
+                <Style TargetType="{x:Type GroupBox}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsValid}" 
+                                     Value="false">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsValid}" Value="true">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </GroupBox.Style>
+            <TextBlock Height="68" Name="tbValidationSummary" 
+                       Text="{Binding ValidationSummary}" Width="379" />
+        </GroupBox>
+        <Button Content="Submit Order" Height="29" HorizontalAlignment="Left" 
+                Margin="2,3,0,0" Name="btnSubmitOrder" VerticalAlignment="Top"
+                Width="130" Grid.Row="3"
+                Command="{Binding SubmitOrderCommand}" Grid.Column="1" />
+    </Grid>
+</Window>

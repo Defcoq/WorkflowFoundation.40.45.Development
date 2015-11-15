@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="40dbaf5b-7acd-420a-ab91-313d5a207a0c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:65448/BookInventoryParameter.xamlx" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BookInventoryParameter.xsd" MetadataType="Schema" ID="cc660d06-ee5c-4b4c-b49a-b91b7c44c721" SourceId="1" SourceUrl="http://localhost:65448/BookInventoryParameter.xamlx?xsd=xsd1" />
+    <MetadataFile FileName="BookInventoryParameter1.xsd" MetadataType="Schema" ID="274c3462-3bb5-4431-a96b-41c3ce355e28" SourceId="1" SourceUrl="http://localhost:65448/BookInventoryParameter.xamlx?xsd=xsd2" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="59579012-be34-4803-8a46-316635a1db1d" SourceId="1" SourceUrl="http://localhost:65448/BookInventoryParameter.xamlx?wsdl" />
+    <MetadataFile FileName="BookInventoryParameter.disco" MetadataType="Disco" ID="0e9c7e91-029e-4d81-9f34-771bf7a25d96" SourceId="1" SourceUrl="http://localhost:65448/BookInventoryParameter.xamlx?disco" />
+    <MetadataFile FileName="BookInventoryParameter2.xsd" MetadataType="Schema" ID="4b7ea764-1414-4979-8b38-2eac06bc2def" SourceId="1" SourceUrl="http://localhost:65448/BookInventoryParameter.xamlx?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

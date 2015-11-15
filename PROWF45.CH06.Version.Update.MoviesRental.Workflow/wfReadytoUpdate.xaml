@@ -1,0 +1,461 @@
+﻿<Activity mc:Ignorable="sads sap sap2010" x:Class="MovieRentalProcess"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:pcvuma="clr-namespace:PROWF45.CH06.Verion.Update.MoviesRental.Activities;assembly=PROWF45.CH06.Verion.Update.MoviesRental.Activities"
+ xmlns:pcvumam="clr-namespace:PROWF45.CH06.Verion.Update.MoviesRental.Activities.Model;assembly=PROWF45.CH06.Verion.Update.MoviesRental.Activities"
+ xmlns:sad="clr-namespace:System.Activities.DynamicUpdate;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="OutMovieRental" Type="OutArgument(pcvumam:CustomerRental)" />
+  </x:Members>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>PROWF45.CH06.Verion.Update.MoviesRental.Activities.Model</x:String>
+      <x:String>System.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <sad:DynamicUpdateInfo.OriginalActivityBuilder>
+    <ActivityBuilder Name="MovieRentalProcess">
+      <TextExpression.NamespacesForImplementation>
+        <sco:Collection x:TypeArguments="x:String">
+          <x:String>System</x:String>
+          <x:String>System.Collections.Generic</x:String>
+          <x:String>System.Data</x:String>
+          <x:String>System.Linq</x:String>
+          <x:String>System.Text</x:String>
+          <x:String>PROWF45.CH06.Verion.Update.MoviesRental.Activities.Model</x:String>
+        </sco:Collection>
+      </TextExpression.NamespacesForImplementation>
+      <TextExpression.ReferencesForImplementation>
+        <sco:Collection x:TypeArguments="AssemblyReference">
+          <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+          <AssemblyReference>System</AssemblyReference>
+          <AssemblyReference>System.Activities</AssemblyReference>
+          <AssemblyReference>System.Core</AssemblyReference>
+          <AssemblyReference>System.Data</AssemblyReference>
+          <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+          <AssemblyReference>System.ServiceModel</AssemblyReference>
+          <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+          <AssemblyReference>System.Xaml</AssemblyReference>
+          <AssemblyReference>System.Xml</AssemblyReference>
+          <AssemblyReference>System.Xml.Linq</AssemblyReference>
+          <AssemblyReference>PROWF45.CH06.Verion.Update.MoviesRental.Activities</AssemblyReference>
+          <AssemblyReference>mscorlib</AssemblyReference>
+          <AssemblyReference>PROWF45.CH06.Version.Update.MoviesRental.Workflow</AssemblyReference>
+        </sco:Collection>
+      </TextExpression.ReferencesForImplementation>
+      <ActivityBuilder.Properties>
+        <DynamicActivityProperty Name="OutMovieRental" Type="OutArgument(pcvumam:CustomerRental)" />
+      </ActivityBuilder.Properties>
+      <StateMachine sads:DebugSymbol.Symbol="d5UBQzpcV29ya3NhcGNlXHJlcG9zXGRvdC5uZXQgZGV2ZWxvcG1lbnRcV29ya2Zsb3dGb3VuZGF0aW9uLjQwLjQ1LkRldmVsb3BtZW50XFBST1dGNDUuQ0gwNi5WZXJzaW9uLlVwZGF0ZS5Nb3ZpZXNSZW50YWwuV29ya2Zsb3dcTW92aWVSZW50YWxQcm9jZXNzLnhhbWwbLwOzARICAQGuAQuuAWsCAT0xB6UBDwIBKDgPgQEXAgEWZx92JwIBDVcXfR8CAQI1DzWcAQIBPIYBD4wBKAIBN54BD54BagIBM5IBD5sBIQIBKjwXUSICARtUF1SJAQIBGGkjdCwCAQ9bH2E4AgEIZB9kmQECAQSJARWJAXQCATiZAROZAX4CAS+VARWVAWwCASs9GUMyAgEkRBlPMAIBHVAZUFACARxxKXGFAQIBE2wpbIsBAgEQXiVeiwECAQlAH0CLAQIBJUwfTIMBAgEhRx9HiwECAR4=">
+        <StateMachine.InitialState>
+          <State x:Name="__ReferenceID4" DisplayName="MoviesSearch">
+            <State.Transitions>
+              <Transition DisplayName="DoneSearching">
+                <Transition.Trigger>
+                  <pcvuma:WaitForResponse x:TypeArguments="x:Boolean" ResponseName="FinishedSearching" />
+                </Transition.Trigger>
+                <Transition.To>
+                  <State x:Name="__ReferenceID5" DisplayName="CompletedMoviesSearch">
+                    <State.Transitions>
+                      <Transition DisplayName="InsertCard">
+                        <Transition.Trigger>
+                          <Sequence>
+                            <pcvuma:WaitForResponse x:TypeArguments="pcvumam:CreditCard" ResponseName="ScanPaymentCard">
+                              <pcvuma:WaitForResponse.Result>
+                                <OutArgument x:TypeArguments="pcvumam:CreditCard">
+                                  <mca:CSharpReference x:TypeArguments="pcvumam:CreditCard">varHoldNewRental.PaymentCard</mca:CSharpReference>
+                                </OutArgument>
+                              </pcvuma:WaitForResponse.Result>
+                            </pcvuma:WaitForResponse>
+                            <pcvuma:RunCreditCard>
+                              <pcvuma:RunCreditCard.Result>
+                                <OutArgument x:TypeArguments="pcvumam:CreditCard">
+                                  <mca:CSharpReference x:TypeArguments="pcvumam:CreditCard">varHoldNewRental.PaymentCard</mca:CSharpReference>
+                                </OutArgument>
+                              </pcvuma:RunCreditCard.Result>
+                              <pcvuma:RunCreditCard.inCreditCard>
+                                <InArgument x:TypeArguments="pcvumam:CreditCard">
+                                  <mca:CSharpValue x:TypeArguments="pcvumam:CreditCard">varHoldNewRental.PaymentCard</mca:CSharpValue>
+                                </InArgument>
+                              </pcvuma:RunCreditCard.inCreditCard>
+                            </pcvuma:RunCreditCard>
+                            <Persist />
+                          </Sequence>
+                        </Transition.Trigger>
+                        <Transition.Condition>
+                          <mca:CSharpValue x:TypeArguments="x:Boolean">varHoldNewRental.PaymentCard.TransactionNumber&gt;0</mca:CSharpValue>
+                        </Transition.Condition>
+                        <Transition.To>
+                          <State x:Name="__ReferenceID7" DisplayName="ConfirmRental">
+                            <State.Transitions>
+                              <Transition DisplayName="ReturnMovie">
+                                <Transition.Trigger>
+                                  <pcvuma:WaitForResponse x:TypeArguments="pcvumam:CreditCard" ResponseName="ReturnMovie">
+                                    <pcvuma:WaitForResponse.Result>
+                                      <OutArgument x:TypeArguments="pcvumam:CreditCard">
+                                        <mca:CSharpReference x:TypeArguments="pcvumam:CreditCard">varHoldReturnMovieCard</mca:CSharpReference>
+                                      </OutArgument>
+                                    </pcvuma:WaitForResponse.Result>
+                                  </pcvuma:WaitForResponse>
+                                </Transition.Trigger>
+                                <Transition.Condition>
+                                  <mca:CSharpValue x:TypeArguments="x:Boolean">varHoldNewRental.PaymentCard.Equals(varHoldReturnMovieCard)</mca:CSharpValue>
+                                </Transition.Condition>
+                                <Transition.To>
+                                  <State x:Name="__ReferenceID6" DisplayName="CompleteMovieRental" IsFinal="True">
+                                    <State.Entry>
+                                      <Assign>
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="pcvumam:CustomerRental">
+                                            <mca:CSharpReference x:TypeArguments="pcvumam:CustomerRental">OutMovieRental</mca:CSharpReference>
+                                          </OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="pcvumam:CustomerRental">
+                                            <mca:CSharpValue x:TypeArguments="pcvumam:CustomerRental">varHoldNewRental</mca:CSharpValue>
+                                          </InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </State.Entry>
+                                  </State>
+                                </Transition.To>
+                              </Transition>
+                            </State.Transitions>
+                            <State.Variables>
+                              <Variable x:TypeArguments="pcvumam:CreditCard" Name="varHoldReturnMovieCard" />
+                            </State.Variables>
+                          </State>
+                        </Transition.To>
+                      </Transition>
+                    </State.Transitions>
+                  </State>
+                </Transition.To>
+              </Transition>
+              <Transition DisplayName="SelectMovies">
+                <Transition.Trigger>
+                  <pcvuma:WaitForResponse x:TypeArguments="pcvumam:Movie" ResponseName="SelectMovie">
+                    <pcvuma:WaitForResponse.Result>
+                      <OutArgument x:TypeArguments="pcvumam:Movie">
+                        <mca:CSharpReference x:TypeArguments="pcvumam:Movie">varHoldSelectedMovie</mca:CSharpReference>
+                      </OutArgument>
+                    </pcvuma:WaitForResponse.Result>
+                  </pcvuma:WaitForResponse>
+                </Transition.Trigger>
+                <Transition.To>
+                  <x:Reference>__ReferenceID4</x:Reference>
+                </Transition.To>
+                <Transition.Action>
+                  <AddToCollection x:TypeArguments="pcvumam:Movie" DisplayName="AddToCollection&lt;Movie&gt;">
+                    <AddToCollection.Item>
+                      <InArgument x:TypeArguments="pcvumam:Movie">
+                        <mca:CSharpValue x:TypeArguments="pcvumam:Movie">varHoldSelectedMovie</mca:CSharpValue>
+                      </InArgument>
+                    </AddToCollection.Item>
+                    <InArgument x:TypeArguments="scg:ICollection(pcvumam:Movie)">
+                      <mca:CSharpValue x:TypeArguments="scg:ICollection(pcvumam:Movie)">varHoldNewRental.Movies</mca:CSharpValue>
+                    </InArgument>
+                  </AddToCollection>
+                </Transition.Action>
+                <Transition.Condition>
+                  <mca:CSharpValue x:TypeArguments="x:Boolean">varHoldSelectedMovie != null</mca:CSharpValue>
+                </Transition.Condition>
+              </Transition>
+            </State.Transitions>
+            <State.Variables>
+              <Variable x:TypeArguments="pcvumam:Movie" Name="varHoldSelectedMovie" />
+            </State.Variables>
+          </State>
+        </StateMachine.InitialState>
+        <x:Reference>__ReferenceID4</x:Reference>
+        <x:Reference>__ReferenceID5</x:Reference>
+        <x:Reference>__ReferenceID6</x:Reference>
+        <x:Reference>__ReferenceID7</x:Reference>
+        <StateMachine.Variables>
+          <Variable x:TypeArguments="pcvumam:CustomerRental" Name="varHoldNewRental">
+            <Variable.Default>
+              <mca:CSharpValue x:TypeArguments="pcvumam:CustomerRental">new CustomerRental()</mca:CSharpValue>
+            </Variable.Default>
+          </Variable>
+        </StateMachine.Variables>
+      </StateMachine>
+    </ActivityBuilder>
+  </sad:DynamicUpdateInfo.OriginalActivityBuilder>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PROWF45.CH06.Verion.Update.MoviesRental.Activities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PROWF45.CH06.Version.Update.MoviesRental.Workflow</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <StateMachine sad:DynamicUpdateInfo.MapItem="1">
+    <StateMachine.InitialState>
+      <State x:Name="__ReferenceID0" DisplayName="MoviesSearch" sad:DynamicUpdateInfo.MapItem="40">
+        <State.Transitions>
+          <Transition DisplayName="DoneSearching">
+            <Transition.Trigger>
+              <pcvuma:WaitForResponse x:TypeArguments="x:Boolean" sad:DynamicUpdateInfo.MapItem="60" ResponseName="FinishedSearching" />
+            </Transition.Trigger>
+            <Transition.To>
+              <State x:Name="__ReferenceID1" DisplayName="CompletedMoviesSearch" sad:DynamicUpdateInfo.MapItem="22">
+                <State.Transitions>
+                  <Transition DisplayName="InsertCard">
+                    <Transition.Trigger>
+                      <Sequence sad:DynamicUpdateInfo.MapItem="27">
+                        <pcvuma:WaitForResponse x:TypeArguments="pcvumam:CreditCard" sad:DynamicUpdateInfo.MapItem="36" ResponseName="ScanPaymentCard">
+                          <pcvuma:WaitForResponse.Result>
+                            <OutArgument x:TypeArguments="pcvumam:CreditCard">
+                              <mca:CSharpReference x:TypeArguments="pcvumam:CreditCard" sad:DynamicUpdateInfo.MapItem="37">varHoldNewRental.PaymentCard</mca:CSharpReference>
+                            </OutArgument>
+                          </pcvuma:WaitForResponse.Result>
+                        </pcvuma:WaitForResponse>
+                        <pcvuma:RunCreditCard sad:DynamicUpdateInfo.MapItem="29">
+                          <pcvuma:RunCreditCard.Result>
+                            <OutArgument x:TypeArguments="pcvumam:CreditCard">
+                              <mca:CSharpReference x:TypeArguments="pcvumam:CreditCard" sad:DynamicUpdateInfo.MapItem="30">varHoldNewRental.PaymentCard</mca:CSharpReference>
+                            </OutArgument>
+                          </pcvuma:RunCreditCard.Result>
+                          <pcvuma:RunCreditCard.inCreditCard>
+                            <InArgument x:TypeArguments="pcvumam:CreditCard">
+                              <mca:CSharpValue x:TypeArguments="pcvumam:CreditCard" sad:DynamicUpdateInfo.MapItem="33">varHoldNewRental.PaymentCard</mca:CSharpValue>
+                            </InArgument>
+                          </pcvuma:RunCreditCard.inCreditCard>
+                        </pcvuma:RunCreditCard>
+                        <Persist sad:DynamicUpdateInfo.MapItem="28" />
+                      </Sequence>
+                    </Transition.Trigger>
+                    <Transition.Condition>
+                      <mca:CSharpValue x:TypeArguments="x:Boolean" sad:DynamicUpdateInfo.MapItem="24">varHoldNewRental.PaymentCard.TransactionNumber&gt;0</mca:CSharpValue>
+                    </Transition.Condition>
+                    <Transition.To>
+                      <State x:Name="__ReferenceID3" DisplayName="ConfirmRental" sad:DynamicUpdateInfo.MapItem="2">
+                        <State.Transitions>
+                          <Transition DisplayName="ReturnMovie">
+                            <Transition.Trigger>
+                              <pcvuma:WaitForResponse x:TypeArguments="pcvumam:CreditCard" sad:DynamicUpdateInfo.MapItem="8" ResponseName="ReturnMovie">
+                                <pcvuma:WaitForResponse.Result>
+                                  <OutArgument x:TypeArguments="pcvumam:CreditCard">
+                                    <mca:CSharpReference x:TypeArguments="pcvumam:CreditCard" sad:DynamicUpdateInfo.MapItem="9">varHoldReturnMovieCard</mca:CSharpReference>
+                                  </OutArgument>
+                                </pcvuma:WaitForResponse.Result>
+                              </pcvuma:WaitForResponse>
+                            </Transition.Trigger>
+                            <Transition.Condition>
+                              <mca:CSharpValue x:TypeArguments="x:Boolean" sad:DynamicUpdateInfo.MapItem="4">varHoldNewRental.PaymentCard.Equals(varHoldReturnMovieCard)</mca:CSharpValue>
+                            </Transition.Condition>
+                            <Transition.To>
+                              <State x:Name="__ReferenceID2" DisplayName="CompleteMovieRental" IsFinal="True" sad:DynamicUpdateInfo.MapItem="13">
+                                <State.Entry>
+                                  <Sequence>
+                                    <pcvumam:MoviesJustReleased Result="[varHoldNewRental.Movies]" inBasedOnMovie="[varHoldNewRental.Movies(0)]" sap2010:WorkflowViewState.IdRef="MoviesJustReleased_1" />
+                                    <Assign sad:DynamicUpdateInfo.MapItem="15">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="pcvumam:CustomerRental">
+                                          <mca:CSharpReference x:TypeArguments="pcvumam:CustomerRental" sad:DynamicUpdateInfo.MapItem="16">OutMovieRental</mca:CSharpReference>
+                                        </OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="pcvumam:CustomerRental">
+                                          <mca:CSharpValue x:TypeArguments="pcvumam:CustomerRental" sad:DynamicUpdateInfo.MapItem="19">varHoldNewRental</mca:CSharpValue>
+                                        </InArgument>
+                                      </Assign.Value>
+                                      <sap2010:WorkflowViewState.IdRef>Assign_1</sap2010:WorkflowViewState.IdRef>
+                                    </Assign>
+                                    <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
+                                  </Sequence>
+                                </State.Entry>
+                                <sap2010:WorkflowViewState.IdRef>State_1</sap2010:WorkflowViewState.IdRef>
+                              </State>
+                            </Transition.To>
+                            <sap2010:WorkflowViewState.IdRef>Transition_1</sap2010:WorkflowViewState.IdRef>
+                          </Transition>
+                        </State.Transitions>
+                        <State.Variables>
+                          <Variable x:TypeArguments="pcvumam:CreditCard" Name="varHoldReturnMovieCard" />
+                        </State.Variables>
+                        <sap2010:WorkflowViewState.IdRef>State_2</sap2010:WorkflowViewState.IdRef>
+                      </State>
+                    </Transition.To>
+                    <sap2010:WorkflowViewState.IdRef>Transition_2</sap2010:WorkflowViewState.IdRef>
+                  </Transition>
+                </State.Transitions>
+                <sap2010:WorkflowViewState.IdRef>State_3</sap2010:WorkflowViewState.IdRef>
+              </State>
+            </Transition.To>
+            <sap2010:WorkflowViewState.IdRef>Transition_3</sap2010:WorkflowViewState.IdRef>
+          </Transition>
+          <Transition DisplayName="SelectMovies">
+            <Transition.Trigger>
+              <pcvuma:WaitForResponse x:TypeArguments="pcvumam:Movie" sad:DynamicUpdateInfo.MapItem="55" ResponseName="SelectMovie">
+                <pcvuma:WaitForResponse.Result>
+                  <OutArgument x:TypeArguments="pcvumam:Movie">
+                    <mca:CSharpReference x:TypeArguments="pcvumam:Movie" sad:DynamicUpdateInfo.MapItem="56">varHoldSelectedMovie</mca:CSharpReference>
+                  </OutArgument>
+                </pcvuma:WaitForResponse.Result>
+              </pcvuma:WaitForResponse>
+            </Transition.Trigger>
+            <Transition.To>
+              <x:Reference>__ReferenceID0</x:Reference>
+            </Transition.To>
+            <Transition.Action>
+              <AddToCollection x:TypeArguments="pcvumam:Movie" DisplayName="AddToCollection&lt;Movie&gt;" sad:DynamicUpdateInfo.MapItem="42">
+                <AddToCollection.Item>
+                  <InArgument x:TypeArguments="pcvumam:Movie">
+                    <mca:CSharpValue x:TypeArguments="pcvumam:Movie" sad:DynamicUpdateInfo.MapItem="43">varHoldSelectedMovie</mca:CSharpValue>
+                  </InArgument>
+                </AddToCollection.Item>
+                <InArgument x:TypeArguments="scg:ICollection(pcvumam:Movie)">
+                  <mca:CSharpValue x:TypeArguments="scg:ICollection(pcvumam:Movie)" sad:DynamicUpdateInfo.MapItem="47">varHoldNewRental.Movies</mca:CSharpValue>
+                </InArgument>
+              </AddToCollection>
+            </Transition.Action>
+            <Transition.Condition>
+              <mca:CSharpValue x:TypeArguments="x:Boolean" sad:DynamicUpdateInfo.MapItem="51">varHoldSelectedMovie != null</mca:CSharpValue>
+            </Transition.Condition>
+            <sap2010:WorkflowViewState.IdRef>Transition_4</sap2010:WorkflowViewState.IdRef>
+          </Transition>
+        </State.Transitions>
+        <State.Variables>
+          <Variable x:TypeArguments="pcvumam:Movie" Name="varHoldSelectedMovie" />
+        </State.Variables>
+        <sap2010:WorkflowViewState.IdRef>State_4</sap2010:WorkflowViewState.IdRef>
+      </State>
+    </StateMachine.InitialState>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <StateMachine.Variables>
+      <Variable x:TypeArguments="pcvumam:CustomerRental" Name="varHoldNewRental">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="pcvumam:CustomerRental" sad:DynamicUpdateInfo.MapItem="61">new CustomerRental()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+    </StateMachine.Variables>
+    <sap2010:WorkflowViewState.IdRef>StateMachine_1</sap2010:WorkflowViewState.IdRef>
+    <sads:DebugSymbol.Symbol>d5IBQzpcV29ya3NhcGNlXHJlcG9zXGRvdC5uZXQgZGV2ZWxvcG1lbnRcV29ya2Zsb3dGb3VuZGF0aW9uLjQwLjQ1LkRldmVsb3BtZW50XFBST1dGNDUuQ0gwNi5WZXJzaW9uLlVwZGF0ZS5Nb3ZpZXNSZW50YWwuV29ya2Zsb3dcd2ZSZWFkeXRvVXBkYXRlLnhhbWwf1gED6AISAgEB4gIL4gKOAQIBQtgBB9kCDwIBLd8BD7ICFwIBG44CH6MCJwIBDf4BF6wCHwIBAtwBD9wBiQECAUG4Ag++AigCATzQAg/QAo0BAgE4xAIPzQIhAgEv4wEX+AEiAgEg+wEX+wGsAQIBHZACI6ACLgIBD4ICH4gCOAIBCIsCH4sCuwECAQS7AhW7ApcBAgE9ywITywKhAQIBNMcCFccCjwECATDkARnqATICASnrARn2ATACASL3ARn3AUcCASGRAiWRAssBAgEXkgIlngIuAgEQhQIlhQKtAQIBCecBH+cBrgECASrzAR/zAaYBAgEm7gEf7gGuAQIBI5ECSJECYwIBGpECc5ECkQECARiaAiuaAqoBAgEUlQIrlQKwAQIBEQ==</sads:DebugSymbol.Symbol>
+  </StateMachine>
+  <sap2010:WorkflowViewState.IdRef>MovieRentalProcess_1</sap2010:WorkflowViewState.IdRef>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="MoviesJustReleased_1" sap:VirtualizedContainerService.HintSize="243.2,22.4" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="265.6,248">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="State_1" sap:VirtualizedContainerService.HintSize="326.4,361.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">23.2,209.6</av:Point>
+            <av:Size x:Key="ShapeSize">198.4,80</av:Size>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Double x:Key="StateContainerWidth">184.00000000000006</x:Double>
+            <x:Double x:Key="StateContainerHeight">43.92000000000013</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Transition_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Int32 x:Key="SrcConnectionPointIndex">6</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">7</x:Int32>
+            <av:PointCollection x:Key="ConnectorLocation">61.36,412.4 61.36,382.4 43.04,382.4 43.04,289.6</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="State_2" sap:VirtualizedContainerService.HintSize="113.6,60.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">50,412.4</av:Point>
+            <av:Size x:Key="ShapeSize">113.6,60.8</av:Size>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Transition_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Int32 x:Key="SrcConnectionPointIndex">3</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">2</x:Int32>
+            <av:PointCollection x:Key="ConnectorLocation">368.88,260.4 368.88,382.4 55.68,382.4 55.68,412.4</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="State_3" sap:VirtualizedContainerService.HintSize="113.6,60.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">363.2,199.6</av:Point>
+            <av:Size x:Key="ShapeSize">113.6,60.8</av:Size>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Transition_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Int32 x:Key="SrcConnectionPointIndex">3</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">2</x:Int32>
+            <av:PointCollection x:Key="ConnectorLocation">55.68,140.8 55.68,170.8 368.88,170.8 368.88,199.6</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Transition_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Int32 x:Key="SrcConnectionPointIndex">0</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">4</x:Int32>
+            <av:PointCollection x:Key="ConnectorLocation">163.6,83.04 193.6,83.04 193.6,86.08 163.6,86.08</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="State_4" sap:VirtualizedContainerService.HintSize="113.6,60.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">50,80</av:Point>
+            <av:Size x:Key="ShapeSize">113.6,60.8</av:Size>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="StateMachine_1" sap:VirtualizedContainerService.HintSize="614.4,636.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <x:Double x:Key="StateContainerWidth">600</x:Double>
+            <x:Double x:Key="StateContainerHeight">600</x:Double>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,110.4 163.6,110.4</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="MovieRentalProcess_1" sap:VirtualizedContainerService.HintSize="654.4,716.8" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

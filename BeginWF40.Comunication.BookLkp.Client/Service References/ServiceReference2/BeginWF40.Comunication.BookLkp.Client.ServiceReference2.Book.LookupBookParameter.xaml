@@ -1,0 +1,90 @@
+<Activity mc:Ignorable="sap2010 sads" x:Class="BeginWF40.Comunication.BookLkp.Client.ServiceReference2.Activities.LookupBookParameter" this:LookupBookParameter.EndpointConfigurationName="BasicHttpBinding_Book1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:bcbcs="clr-namespace:BeginWF40.Comunication.BookLkp.Client.ServiceReference2;assembly=BeginWF40.Comunication.BookLkp.Client"
+ xmlns:bcbcs1="clr-namespace:BeginWF40.Comunication.BookLkp.Client.ServiceReference2;assembly=BeginWF40.Comunication.BookLkp.Client, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:p="http://tempuri.org/"
+ xmlns:p1="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:sc="clr-namespace:System.ComponentModel;assembly=System"
+ xmlns:srs="clr-namespace:System.Runtime.Serialization;assembly=System.Runtime.Serialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+ xmlns:this="clr-namespace:BeginWF40.Comunication.BookLkp.Client.ServiceReference2.Activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="EndpointConfigurationName" Type="x:String">
+      <x:Property.Attributes>
+        <sc:DefaultValueAttribute>
+          <x:Arguments>
+            <x:String>BasicHttpBinding_Book1</x:String>
+          </x:Arguments>
+        </sc:DefaultValueAttribute>
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="Author" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="Title" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="ISBN" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="Result" Type="OutArgument(bcbcs:BookInfo[])" />
+  </x:Members>
+  <mva:VisualBasic.Settings>Assembly references and imported namespaces serialized as XML namespaces</mva:VisualBasic.Settings>
+  <Sequence>
+    <Sequence.Variables>
+      <x:Reference>__ReferenceID1</x:Reference>
+      <x:Reference>__ReferenceID2</x:Reference>
+    </Sequence.Variables>
+    <p1:Send x:Name="__ReferenceID0" Action="http://tempuri.org/Book/LookupBookParameter" OperationName="LookupBookParameter" ServiceContractName="p:Book">
+      <p1:Send.CorrelationInitializers>
+        <p1:RequestReplyCorrelationInitializer>
+          <p1:RequestReplyCorrelationInitializer.CorrelationHandle>
+            <InArgument x:TypeArguments="p1:CorrelationHandle">
+              <VariableValue x:TypeArguments="p1:CorrelationHandle">
+                <VariableValue.Variable>
+                  <Variable x:TypeArguments="p1:CorrelationHandle" x:Name="__ReferenceID2" />
+                </VariableValue.Variable>
+              </VariableValue>
+            </InArgument>
+          </p1:RequestReplyCorrelationInitializer.CorrelationHandle>
+        </p1:RequestReplyCorrelationInitializer>
+      </p1:Send.CorrelationInitializers>
+      <p1:SendMessageContent>
+        <InArgument x:TypeArguments="bcbcs:LookupBookParameterRequest">[New BeginWF40.Comunication.BookLkp.Client.ServiceReference2.LookupBookParameterRequest() With { .Author = Author, .Title = Title, .ISBN = ISBN }]</InArgument>
+      </p1:SendMessageContent>
+      <p1:Send.EndpointConfigurationName>
+        <PropertyReference x:TypeArguments="x:String" PropertyName="EndpointConfigurationName" />
+      </p1:Send.EndpointConfigurationName>
+    </p1:Send>
+    <p1:ReceiveReply Request="{x:Reference __ReferenceID0}" Action="http://tempuri.org/Book/LookupBookParameterResponse">
+      <p1:ReceiveMessageContent>
+        <OutArgument x:TypeArguments="bcbcs:LookupBookParameterResponse">
+          <VariableReference x:TypeArguments="bcbcs:LookupBookParameterResponse">
+            <VariableReference.Variable>
+              <Variable x:TypeArguments="bcbcs:LookupBookParameterResponse" x:Name="__ReferenceID1" Name="tempResult_017b842875054718b1ff88a724b2841e" />
+            </VariableReference.Variable>
+          </VariableReference>
+        </OutArgument>
+      </p1:ReceiveMessageContent>
+    </p1:ReceiveReply>
+    <Assign>
+      <Assign.To>
+        <OutArgument x:TypeArguments="bcbcs:BookInfo[]">[Result]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="bcbcs:BookInfo[]">[tempResult_017b842875054718b1ff88a724b2841e.Result]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <sads:DebugSymbol.Symbol>d+wBQzpcV29ya3NhcGNlXHJlcG9zXGRvdC5uZXQgZGV2ZWxvcG1lbnRcV29ya2Zsb3dGb3VuZGF0aW9uLjQwLjQ1LkRldmVsb3BtZW50XEJlZ2luV0Y0MC5Db211bmljYXRpb24uQm9va0xrcC5DbGllbnRcU2VydmljZSBSZWZlcmVuY2VzXFNlcnZpY2VSZWZlcmVuY2UyXEJlZ2luV0Y0MC5Db211bmljYXRpb24uQm9va0xrcC5DbGllbnQuU2VydmljZVJlZmVyZW5jZTIuQm9vay5Mb29rdXBCb29rUGFyYW1ldGVyLnhhbWwJKwNZDgIBATAFRA8CAQpFBU8XAgEHUAVXDgIBAj9IP9oBAgEMNQ85HwIBC0gLTB8CAQlVOFVsAgEFUjlSQQIBAw==</sads:DebugSymbol.Symbol>
+  </Sequence>
+</Activity>

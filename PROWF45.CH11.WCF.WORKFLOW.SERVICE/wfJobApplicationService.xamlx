@@ -1,0 +1,690 @@
+﻿<WorkflowService mc:Ignorable="sap sap2010 sads" p:TextExpression.Namespaces="{x:Reference __ReferenceID17}" p:TextExpression.References="{x:Reference __ReferenceID18}" ConfigurationName="JobApplicationService" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="WorkflowService_1" Name="JobApplicationService"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:ec="clr-namespace:Exercise1.Core;assembly=PROWF45.CH11.WCF.WORKFLOW.SERVICE"
+ xmlns:ec1="clr-namespace:Exercise1.CustomActvities;assembly=PROWF45.CH11.WCF.WORKFLOW.SERVICE"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ssx="clr-namespace:System.ServiceModel.XamlIntegration;assembly=System.ServiceModel"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Parallel sap2010:WorkflowViewState.IdRef="Parallel_1">
+    <p:TextExpression.Namespaces>
+      <sco:Collection x:TypeArguments="x:String" x:Name="__ReferenceID17">
+        <x:String>System</x:String>
+        <x:String>System.Collections.Generic</x:String>
+        <x:String>System.Data</x:String>
+        <x:String>System.Linq</x:String>
+        <x:String>System.Text</x:String>
+        <x:String>Exercise1.Core</x:String>
+      </sco:Collection>
+    </p:TextExpression.Namespaces>
+    <p:TextExpression.References>
+      <sco:Collection x:TypeArguments="p:AssemblyReference" x:Name="__ReferenceID18">
+        <p:AssemblyReference>Microsoft.CSharp</p:AssemblyReference>
+        <p:AssemblyReference>System.Web.DynamicData</p:AssemblyReference>
+        <p:AssemblyReference>System.Drawing</p:AssemblyReference>
+        <p:AssemblyReference>System.Web.Entity</p:AssemblyReference>
+        <p:AssemblyReference>System.Web.ApplicationServices</p:AssemblyReference>
+        <p:AssemblyReference>System</p:AssemblyReference>
+        <p:AssemblyReference>System.Activities</p:AssemblyReference>
+        <p:AssemblyReference>System.Core</p:AssemblyReference>
+        <p:AssemblyReference>System.Data</p:AssemblyReference>
+        <p:AssemblyReference>System.Data.Entity</p:AssemblyReference>
+        <p:AssemblyReference>System.Runtime.Serialization</p:AssemblyReference>
+        <p:AssemblyReference>System.ServiceModel</p:AssemblyReference>
+        <p:AssemblyReference>System.ServiceModel.Activities</p:AssemblyReference>
+        <p:AssemblyReference>System.ServiceModel.Channels</p:AssemblyReference>
+        <p:AssemblyReference>System.Web</p:AssemblyReference>
+        <p:AssemblyReference>System.Xaml</p:AssemblyReference>
+        <p:AssemblyReference>System.Xml</p:AssemblyReference>
+        <p:AssemblyReference>System.Xml.Linq</p:AssemblyReference>
+        <p:AssemblyReference>mscorlib</p:AssemblyReference>
+        <p:AssemblyReference>PROWF45.CH11.WCF.WORKFLOW.SERVICE</p:AssemblyReference>
+      </sco:Collection>
+    </p:TextExpression.References>
+    <p:Parallel.Variables>
+      <p:Variable x:TypeArguments="ec:JobApplicationStatus" Name="varJobApplicationStatus">
+        <p:Variable.Default>
+          <mca:CSharpValue x:TypeArguments="ec:JobApplicationStatus">new JobApplicationStatus();</mca:CSharpValue>
+        </p:Variable.Default>
+      </p:Variable>
+      <p:Variable x:TypeArguments="x:Boolean" Default="False" Name="varWorkflowComplete" />
+      <p:Variable x:TypeArguments="CorrelationHandle" Name="hndJobApplicationId" />
+      <p:Variable x:TypeArguments="s:Guid" Name="varJonApplicationId" />
+    </p:Parallel.Variables>
+    <p:Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+      <p:TextExpression.Namespaces>
+        <sco:Collection x:TypeArguments="x:String">
+          <x:String>System</x:String>
+          <x:String>System.Collections.Generic</x:String>
+          <x:String>System.Data</x:String>
+          <x:String>System.Linq</x:String>
+          <x:String>System.Text</x:String>
+        </sco:Collection>
+      </p:TextExpression.Namespaces>
+      <p:TextExpression.References>
+        <sco:Collection x:TypeArguments="p:AssemblyReference">
+          <p:AssemblyReference>mscorlib</p:AssemblyReference>
+          <p:AssemblyReference>System</p:AssemblyReference>
+          <p:AssemblyReference>System.Core</p:AssemblyReference>
+          <p:AssemblyReference>System.Data</p:AssemblyReference>
+          <p:AssemblyReference>System.ServiceModel</p:AssemblyReference>
+          <p:AssemblyReference>System.Xml</p:AssemblyReference>
+        </sco:Collection>
+      </p:TextExpression.References>
+      <p:Flowchart.Variables>
+        <p:Variable x:TypeArguments="x:String" Name="varFeedBackMessage" />
+      </p:Flowchart.Variables>
+      <p:Flowchart.StartNode>
+        <x:Reference>__ReferenceID14</x:Reference>
+      </p:Flowchart.StartNode>
+      <p:FlowStep x:Name="__ReferenceID14" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+        <p:Sequence p:TextExpression.Namespaces="{x:Reference __ReferenceID1}" p:TextExpression.References="{x:Reference __ReferenceID2}" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <p:Sequence DisplayName="Submit Job Application" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <p:TextExpression.Namespaces>
+              <sco:Collection x:TypeArguments="x:String" x:Name="__ReferenceID1">
+                <x:String>System</x:String>
+                <x:String>System.Collections.Generic</x:String>
+                <x:String>System.Data</x:String>
+                <x:String>System.Linq</x:String>
+                <x:String>System.Text</x:String>
+              </sco:Collection>
+            </p:TextExpression.Namespaces>
+            <p:TextExpression.References>
+              <sco:Collection x:TypeArguments="p:AssemblyReference" x:Name="__ReferenceID2">
+                <p:AssemblyReference>mscorlib</p:AssemblyReference>
+                <p:AssemblyReference>System</p:AssemblyReference>
+                <p:AssemblyReference>System.Core</p:AssemblyReference>
+                <p:AssemblyReference>System.Data</p:AssemblyReference>
+                <p:AssemblyReference>System.ServiceModel</p:AssemblyReference>
+                <p:AssemblyReference>System.Xml</p:AssemblyReference>
+              </sco:Collection>
+            </p:TextExpression.References>
+            <p:Sequence.Variables>
+              <p:Variable x:TypeArguments="x:Int32" Name="data" />
+            </p:Sequence.Variables>
+            <Receive x:Name="__ReferenceID0" CanCreateInstance="True" DisplayName="Receive Job Application" sap2010:WorkflowViewState.IdRef="Receive_2" OperationName="ApplyForJob" ServiceContractName="IJobApplication">
+              <Receive.CorrelationInitializers>
+                <RequestReplyCorrelationInitializer>
+                  <RequestReplyCorrelationInitializer.CorrelationHandle>
+                    <p:InArgument x:TypeArguments="CorrelationHandle">
+                      <mca:CSharpValue x:TypeArguments="CorrelationHandle">hndJobApplicationId</mca:CSharpValue>
+                    </p:InArgument>
+                  </RequestReplyCorrelationInitializer.CorrelationHandle>
+                </RequestReplyCorrelationInitializer>
+              </Receive.CorrelationInitializers>
+              <ReceiveParametersContent>
+                <p:OutArgument x:TypeArguments="ec:JobApplication" x:Key="application">
+                  <mca:CSharpReference x:TypeArguments="ec:JobApplication">varJobApplicationStatus.SubmittedApplication</mca:CSharpReference>
+                </p:OutArgument>
+              </ReceiveParametersContent>
+            </Receive>
+            <p:Assign DisplayName="Assign Job ApplicationId" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <p:Assign.To>
+                <p:OutArgument x:TypeArguments="s:Guid">
+                  <mca:CSharpReference x:TypeArguments="s:Guid">varJobApplicationStatus.JobApplicationId</mca:CSharpReference>
+                </p:OutArgument>
+              </p:Assign.To>
+              <p:Assign.Value>
+                <p:InArgument x:TypeArguments="s:Guid">
+                  <mca:CSharpValue x:TypeArguments="s:Guid">Guid.NewGuid();</mca:CSharpValue>
+                </p:InArgument>
+              </p:Assign.Value>
+            </p:Assign>
+            <SendReply Request="{x:Reference __ReferenceID0}" DisplayName="SendReplyToReceive" sap2010:WorkflowViewState.IdRef="SendReply_2">
+              <SendReply.CorrelationInitializers>
+                <QueryCorrelationInitializer>
+                  <QueryCorrelationInitializer.CorrelationHandle>
+                    <p:InArgument x:TypeArguments="CorrelationHandle">
+                      <mca:CSharpValue x:TypeArguments="CorrelationHandle">hndJobApplicationId</mca:CSharpValue>
+                    </p:InArgument>
+                  </QueryCorrelationInitializer.CorrelationHandle>
+                  <XPathMessageQuery x:Key="JobApplicationId">
+                    <XPathMessageQuery.Namespaces>
+                      <ssx:XPathMessageContextMarkup>
+                        <x:String x:Key="xgSc">http://tempuri.org/</x:String>
+                      </ssx:XPathMessageContextMarkup>
+                    </XPathMessageQuery.Namespaces>sm:body()/xgSc:ApplyForJobResponse/xgSc:applicationId</XPathMessageQuery>
+                </QueryCorrelationInitializer>
+              </SendReply.CorrelationInitializers>
+              <SendParametersContent>
+                <p:InArgument x:TypeArguments="s:Guid" x:Key="applicationId">
+                  <mca:CSharpValue x:TypeArguments="s:Guid">varJobApplicationStatus.JobApplicationId</mca:CSharpValue>
+                </p:InArgument>
+              </SendParametersContent>
+            </SendReply>
+          </p:Sequence>
+        </p:Sequence>
+        <p:FlowStep.Next>
+          <p:FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+            <p:Sequence DisplayName="Interview Candidate" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Receive DisplayName="Receive Interview Feedback" sap2010:WorkflowViewState.IdRef="Receive_5" OperationName="InterviewCandidate" ServiceContractName="IJobApplication">
+                <Receive.CorrelatesOn>
+                  <XPathMessageQuery x:Key="JobApplicationId">
+                    <XPathMessageQuery.Namespaces>
+                      <ssx:XPathMessageContextMarkup>
+                        <x:String x:Key="xgSc">http://tempuri.org/</x:String>
+                      </ssx:XPathMessageContextMarkup>
+                    </XPathMessageQuery.Namespaces>sm:body()/xgSc:InterviewCandidate/xgSc:ApplicationId</XPathMessageQuery>
+                </Receive.CorrelatesOn>
+                <Receive.CorrelatesWith>
+                  <p:InArgument x:TypeArguments="CorrelationHandle">
+                    <mca:CSharpValue x:TypeArguments="CorrelationHandle">hndJobApplicationId</mca:CSharpValue>
+                  </p:InArgument>
+                </Receive.CorrelatesWith>
+                <ReceiveParametersContent>
+                  <p:OutArgument x:TypeArguments="s:Guid" x:Key="ApplicationId" />
+                  <p:OutArgument x:TypeArguments="x:Boolean" x:Key="PassedInterview">
+                    <mca:CSharpReference x:TypeArguments="x:Boolean">varJobApplicationStatus.PassedInterview</mca:CSharpReference>
+                  </p:OutArgument>
+                </ReceiveParametersContent>
+              </Receive>
+            </p:Sequence>
+            <p:FlowStep.Next>
+              <p:FlowDecision x:Name="__ReferenceID7" DisplayName="Passed Interview" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                <p:FlowDecision.Condition>
+                  <mca:CSharpValue x:TypeArguments="x:Boolean">varJobApplicationStatus.PassedInterview</mca:CSharpValue>
+                </p:FlowDecision.Condition>
+                <p:FlowDecision.True>
+                  <p:FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                    <p:Sequence sap2010:Annotation.AnnotationText="Calls out to another workflow service that performs background checks on SSNs and returns results if convicted of a felon" DisplayName="Do Background Check" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                      <p:Sequence.Variables>
+                        <x:Reference>__ReferenceID4</x:Reference>
+                      </p:Sequence.Variables>
+                      <Send x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="Send_1" OperationName="PerformBackgroundCheck" ServiceContractName="IBackgroundCheck">
+                        <Send.CorrelationInitializers>
+                          <RequestReplyCorrelationInitializer>
+                            <RequestReplyCorrelationInitializer.CorrelationHandle>
+                              <p:InArgument x:TypeArguments="CorrelationHandle">
+                                <p:VariableValue x:TypeArguments="CorrelationHandle">
+                                  <p:VariableValue.Variable>
+                                    <p:Variable x:TypeArguments="CorrelationHandle" x:Name="__ReferenceID4" Name="__handle1" />
+                                  </p:VariableValue.Variable>
+                                </p:VariableValue>
+                              </p:InArgument>
+                            </RequestReplyCorrelationInitializer.CorrelationHandle>
+                          </RequestReplyCorrelationInitializer>
+                        </Send.CorrelationInitializers>
+                        <Send.Endpoint>
+                          <Endpoint AddressUri="http://localhost:51027/BackgroundCheckService.xamlx">
+                            <Endpoint.Binding>
+                              <BasicHttpBinding Name="basicHttpBinding" />
+                            </Endpoint.Binding>
+                          </Endpoint>
+                        </Send.Endpoint>
+                        <SendMessageContent>
+                          <p:InArgument x:TypeArguments="x:String">
+                            <mca:CSharpValue x:TypeArguments="x:String">varJobApplicationStatus.SubmittedApplication.ApplyingCandidate.SSN</mca:CSharpValue>
+                          </p:InArgument>
+                        </SendMessageContent>
+                      </Send>
+                      <ReceiveReply Request="{x:Reference __ReferenceID3}" DisplayName="ReceiveReplyForSend" sap2010:WorkflowViewState.IdRef="ReceiveReply_1">
+                        <ReceiveMessageContent>
+                          <p:OutArgument x:TypeArguments="x:Boolean">
+                            <mca:CSharpReference x:TypeArguments="x:Boolean">varJobApplicationStatus.PassedBackgroundCheck</mca:CSharpReference>
+                          </p:OutArgument>
+                        </ReceiveMessageContent>
+                      </ReceiveReply>
+                    </p:Sequence>
+                    <p:FlowStep.Next>
+                      <p:FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+                        <p:Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+                          <p:If sap2010:WorkflowViewState.IdRef="If_1">
+                            <p:If.Condition>
+                              <p:InArgument x:TypeArguments="x:Boolean">
+                                <mca:CSharpValue x:TypeArguments="x:Boolean">varJobApplicationStatus.PassedBackgroundCheck</mca:CSharpValue>
+                              </p:InArgument>
+                            </p:If.Condition>
+                            <p:If.Then>
+                              <ec1:ProvideFeedbackToCandidate sap2010:WorkflowViewState.IdRef="ProvideFeedbackToCandidate_1" MessageToCandidate="Your background check passed!">
+                                <ec1:ProvideFeedbackToCandidate.EmailAddress>
+                                  <p:InArgument x:TypeArguments="x:String">
+                                    <mca:CSharpValue x:TypeArguments="x:String">varJobApplicationStatus.SubmittedApplication.ApplyingCandidate.EmailAddress</mca:CSharpValue>
+                                  </p:InArgument>
+                                </ec1:ProvideFeedbackToCandidate.EmailAddress>
+                              </ec1:ProvideFeedbackToCandidate>
+                            </p:If.Then>
+                            <p:If.Else>
+                              <ec1:ProvideFeedbackToCandidate sap2010:WorkflowViewState.IdRef="ProvideFeedbackToCandidate_2" MessageToCandidate="Your background check failed!">
+                                <ec1:ProvideFeedbackToCandidate.EmailAddress>
+                                  <p:InArgument x:TypeArguments="x:String">
+                                    <mca:CSharpValue x:TypeArguments="x:String">varJobApplicationStatus.SubmittedApplication.ApplyingCandidate.EmailAddress</mca:CSharpValue>
+                                  </p:InArgument>
+                                </ec1:ProvideFeedbackToCandidate.EmailAddress>
+                              </ec1:ProvideFeedbackToCandidate>
+                            </p:If.Else>
+                          </p:If>
+                        </p:Sequence>
+                        <p:FlowStep.Next>
+                          <p:FlowDecision x:Name="__ReferenceID10">
+                            <p:FlowDecision.Condition>
+                              <mca:CSharpValue x:TypeArguments="x:Boolean">varJobApplicationStatus.PassedBackgroundCheck</mca:CSharpValue>
+                            </p:FlowDecision.Condition>
+                            <p:FlowDecision.True>
+                              <p:FlowStep x:Name="__ReferenceID11">
+                                <p:Sequence DisplayName="Hire Candidate">
+                                  <p:Assign>
+                                    <p:Assign.To>
+                                      <p:OutArgument x:TypeArguments="x:Boolean">
+                                        <mca:CSharpReference x:TypeArguments="x:Boolean">varWorkflowComplete</mca:CSharpReference>
+                                      </p:OutArgument>
+                                    </p:Assign.To>
+                                    <p:Assign.Value>
+                                      <p:InArgument x:TypeArguments="x:Boolean">True</p:InArgument>
+                                    </p:Assign.Value>
+                                    <sap2010:WorkflowViewState.IdRef>Assign_2</sap2010:WorkflowViewState.IdRef>
+                                  </p:Assign>
+                                  <ec1:HireCandidate>
+                                    <ec1:HireCandidate.ApplicationStatus>
+                                      <p:InArgument x:TypeArguments="ec:JobApplicationStatus">
+                                        <mca:CSharpValue x:TypeArguments="ec:JobApplicationStatus">varJobApplicationStatus</mca:CSharpValue>
+                                      </p:InArgument>
+                                    </ec1:HireCandidate.ApplicationStatus>
+                                    <sap2010:WorkflowViewState.IdRef>HireCandidate_1</sap2010:WorkflowViewState.IdRef>
+                                  </ec1:HireCandidate>
+                                  <sap2010:WorkflowViewState.IdRef>Sequence_8</sap2010:WorkflowViewState.IdRef>
+                                </p:Sequence>
+                                <sap2010:WorkflowViewState.IdRef>FlowStep_6</sap2010:WorkflowViewState.IdRef>
+                              </p:FlowStep>
+                            </p:FlowDecision.True>
+                            <p:FlowDecision.False>
+                              <p:FlowStep x:Name="__ReferenceID13">
+                                <p:Assign>
+                                  <p:Assign.To>
+                                    <p:OutArgument x:TypeArguments="x:String">
+                                      <mca:CSharpReference x:TypeArguments="x:String">varFeedBackMessage</mca:CSharpReference>
+                                    </p:OutArgument>
+                                  </p:Assign.To>
+                                  <p:Assign.Value>
+                                    <p:InArgument x:TypeArguments="x:String">You failed the background check!</p:InArgument>
+                                  </p:Assign.Value>
+                                  <sap2010:WorkflowViewState.IdRef>Assign_3</sap2010:WorkflowViewState.IdRef>
+                                </p:Assign>
+                                <p:FlowStep.Next>
+                                  <p:FlowStep x:Name="__ReferenceID5">
+                                    <p:Sequence DisplayName="Provide Feedback">
+                                      <ec1:ProvideFeedbackToCandidate>
+                                        <ec1:ProvideFeedbackToCandidate.EmailAddress>
+                                          <p:InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String">varJobApplicationStatus.SubmittedApplication.ApplyingCandidate.EmailAddress</mca:CSharpValue>
+                                          </p:InArgument>
+                                        </ec1:ProvideFeedbackToCandidate.EmailAddress>
+                                        <ec1:ProvideFeedbackToCandidate.MessageToCandidate>
+                                          <p:InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String">varFeedBackMessage</mca:CSharpValue>
+                                          </p:InArgument>
+                                        </ec1:ProvideFeedbackToCandidate.MessageToCandidate>
+                                        <sap2010:WorkflowViewState.IdRef>ProvideFeedbackToCandidate_3</sap2010:WorkflowViewState.IdRef>
+                                      </ec1:ProvideFeedbackToCandidate>
+                                      <p:Assign>
+                                        <p:Assign.To>
+                                          <p:OutArgument x:TypeArguments="x:Boolean">
+                                            <mca:CSharpReference x:TypeArguments="x:Boolean">varWorkflowComplete</mca:CSharpReference>
+                                          </p:OutArgument>
+                                        </p:Assign.To>
+                                        <p:Assign.Value>
+                                          <p:InArgument x:TypeArguments="x:Boolean">True</p:InArgument>
+                                        </p:Assign.Value>
+                                        <sap2010:WorkflowViewState.IdRef>Assign_4</sap2010:WorkflowViewState.IdRef>
+                                      </p:Assign>
+                                      <sap2010:WorkflowViewState.IdRef>Sequence_9</sap2010:WorkflowViewState.IdRef>
+                                    </p:Sequence>
+                                    <sap2010:WorkflowViewState.IdRef>FlowStep_7</sap2010:WorkflowViewState.IdRef>
+                                  </p:FlowStep>
+                                </p:FlowStep.Next>
+                                <sap2010:WorkflowViewState.IdRef>FlowStep_8</sap2010:WorkflowViewState.IdRef>
+                              </p:FlowStep>
+                            </p:FlowDecision.False>
+                            <sap2010:WorkflowViewState.IdRef>FlowDecision_2</sap2010:WorkflowViewState.IdRef>
+                          </p:FlowDecision>
+                        </p:FlowStep.Next>
+                      </p:FlowStep>
+                    </p:FlowStep.Next>
+                  </p:FlowStep>
+                </p:FlowDecision.True>
+                <p:FlowDecision.False>
+                  <p:FlowStep x:Name="__ReferenceID12">
+                    <p:Assign>
+                      <p:Assign.To>
+                        <p:OutArgument x:TypeArguments="x:String">
+                          <mca:CSharpReference x:TypeArguments="x:String">varFeedBackMessage</mca:CSharpReference>
+                        </p:OutArgument>
+                      </p:Assign.To>
+                      <p:Assign.Value>
+                        <p:InArgument x:TypeArguments="x:String">You failed the interview!</p:InArgument>
+                      </p:Assign.Value>
+                      <sap2010:WorkflowViewState.IdRef>Assign_5</sap2010:WorkflowViewState.IdRef>
+                    </p:Assign>
+                    <p:FlowStep.Next>
+                      <x:Reference>__ReferenceID5</x:Reference>
+                    </p:FlowStep.Next>
+                    <sap2010:WorkflowViewState.IdRef>FlowStep_9</sap2010:WorkflowViewState.IdRef>
+                  </p:FlowStep>
+                </p:FlowDecision.False>
+              </p:FlowDecision>
+            </p:FlowStep.Next>
+          </p:FlowStep>
+        </p:FlowStep.Next>
+      </p:FlowStep>
+      <x:Reference>__ReferenceID6</x:Reference>
+      <x:Reference>__ReferenceID7</x:Reference>
+      <x:Reference>__ReferenceID8</x:Reference>
+      <x:Reference>__ReferenceID9</x:Reference>
+      <x:Reference>__ReferenceID10</x:Reference>
+      <x:Reference>__ReferenceID11</x:Reference>
+      <x:Reference>__ReferenceID12</x:Reference>
+      <x:Reference>__ReferenceID5</x:Reference>
+      <x:Reference>__ReferenceID13</x:Reference>
+    </p:Flowchart>
+    <p:While sap2010:WorkflowViewState.IdRef="While_1">
+      <p:While.Condition>
+        <mca:CSharpValue x:TypeArguments="x:Boolean">varWorkflowComplete == false</mca:CSharpValue>
+      </p:While.Condition>
+      <p:Pick sap2010:WorkflowViewState.IdRef="Pick_1">
+        <p:PickBranch DisplayName="Branch1" sap2010:WorkflowViewState.IdRef="PickBranch_1">
+          <p:PickBranch.Trigger>
+            <p:Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <p:Sequence.Variables>
+                <x:Reference>__ReferenceID16</x:Reference>
+              </p:Sequence.Variables>
+              <Receive x:Name="__ReferenceID15" sap2010:WorkflowViewState.IdRef="Receive_3" OperationName="GetJobApplicationStatus" ServiceContractName="IJobApplication">
+                <Receive.CorrelatesOn>
+                  <XPathMessageQuery x:Key="JobApplicationId">
+                    <XPathMessageQuery.Namespaces>
+                      <ssx:XPathMessageContextMarkup>
+                        <x:String x:Key="xg0">http://schemas.microsoft.com/2003/10/Serialization/</x:String>
+                      </ssx:XPathMessageContextMarkup>
+                    </XPathMessageQuery.Namespaces>sm:body()/xg0:guid</XPathMessageQuery>
+                </Receive.CorrelatesOn>
+                <Receive.CorrelatesWith>
+                  <p:InArgument x:TypeArguments="CorrelationHandle">
+                    <mca:CSharpValue x:TypeArguments="CorrelationHandle">hndJobApplicationId</mca:CSharpValue>
+                  </p:InArgument>
+                </Receive.CorrelatesWith>
+                <Receive.CorrelationInitializers>
+                  <RequestReplyCorrelationInitializer>
+                    <RequestReplyCorrelationInitializer.CorrelationHandle>
+                      <p:InArgument x:TypeArguments="CorrelationHandle">
+                        <p:VariableValue x:TypeArguments="CorrelationHandle">
+                          <p:VariableValue.Variable>
+                            <p:Variable x:TypeArguments="CorrelationHandle" x:Name="__ReferenceID16" Name="__handle1" />
+                          </p:VariableValue.Variable>
+                        </p:VariableValue>
+                      </p:InArgument>
+                    </RequestReplyCorrelationInitializer.CorrelationHandle>
+                  </RequestReplyCorrelationInitializer>
+                </Receive.CorrelationInitializers>
+                <ReceiveMessageContent DeclaredMessageType="s:Guid">
+                  <p:OutArgument x:TypeArguments="s:Guid">
+                    <mca:CSharpReference x:TypeArguments="s:Guid">varJonApplicationId</mca:CSharpReference>
+                  </p:OutArgument>
+                </ReceiveMessageContent>
+              </Receive>
+              <SendReply Request="{x:Reference __ReferenceID15}" DisplayName="SendReplyToReceive" sap2010:WorkflowViewState.IdRef="SendReply_3">
+                <SendParametersContent>
+                  <p:InArgument x:TypeArguments="ec:JobApplicationStatus" x:Key="CurrentJobApplicationStatus">
+                    <mca:CSharpValue x:TypeArguments="ec:JobApplicationStatus">varJobApplicationStatus</mca:CSharpValue>
+                  </p:InArgument>
+                </SendParametersContent>
+              </SendReply>
+            </p:Sequence>
+          </p:PickBranch.Trigger>
+        </p:PickBranch>
+        <p:PickBranch DisplayName="Branch2" sap2010:WorkflowViewState.IdRef="PickBranch_2">
+          <p:PickBranch.Trigger>
+            <Receive sap2010:WorkflowViewState.IdRef="Receive_4" OperationName="TerminateJobApplication" ServiceContractName="IJobApplication">
+              <Receive.CorrelatesOn>
+                <XPathMessageQuery x:Key="JobApplicationId">
+                  <XPathMessageQuery.Namespaces>
+                    <ssx:XPathMessageContextMarkup>
+                      <x:String x:Key="xg0">http://schemas.microsoft.com/2003/10/Serialization/</x:String>
+                    </ssx:XPathMessageContextMarkup>
+                  </XPathMessageQuery.Namespaces>sm:body()/xg0:guid</XPathMessageQuery>
+              </Receive.CorrelatesOn>
+              <Receive.CorrelatesWith>
+                <p:InArgument x:TypeArguments="CorrelationHandle">
+                  <mca:CSharpValue x:TypeArguments="CorrelationHandle">hndJobApplicationId</mca:CSharpValue>
+                </p:InArgument>
+              </Receive.CorrelatesWith>
+              <ReceiveMessageContent DeclaredMessageType="s:Guid">
+                <p:OutArgument x:TypeArguments="s:Guid">
+                  <mca:CSharpReference x:TypeArguments="s:Guid">varJonApplicationId</mca:CSharpReference>
+                </p:OutArgument>
+              </ReceiveMessageContent>
+            </Receive>
+          </p:PickBranch.Trigger>
+          <p:TerminateWorkflow sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="Client terminated the workflow!" />
+        </p:PickBranch>
+      </p:Pick>
+    </p:While>
+    <sads:DebugSymbol.Symbol>d4sBQzpcV29ya3NhcGNlXHJlcG9zXGRvdC5uZXQgZGV2ZWxvcG1lbnRcV29ya2Zsb3dGb3VuZGF0aW9uLjQwLjQ1LkRldmVsb3BtZW50XFBST1dGNDUuQ0gxMS5XQ0YuV09SS0ZMT1cuU0VSVklDRVx3ZkpvYkFwcGxpY2F0aW9uU2VydmljZS54YW1seEgRA9QDEAEBNws3cwEDOjc6PgECPgWBAxMBNoIDBdIDDwEIWQmkARYCsgGnAQ29ARoCpAHBARPBAXkCngHiAhXsAiAClgG4AiXSAjICgAHFARXrASIBbe4BGYgCJgFVjAIfjAKLAQFPqwIhtQIsAUeQAiGlAi4BN4YDB9EDEAEOhAMJhANkAQlaC6MBGAKzAagBD7wBGQKlAekCQukCWwKdAeUCG+UCcwKXAbkCJ8UCSAKJAcYCJ9ACMgKBAckBF+MBHgF35AEX6gEmAW7vARuHAiIBVrICTrICbgFOrgInrgJ/AUiRAiObAi4BP5wCI6MCNwE4hwMJtwMYAR24AwnQAxgBD3ENgAEXAuABgQENjAEYAtEBjQENogEZArQBswEVswFvAqwBuQEVuQGDAQKmAcECLcECfQKQAbwCLbwCtgECigHNAlXNAlkCiAHJAi3JAocBAoIB4AEd4AGdAQF5zgEh0gEzAXjnAR3nAZEBAXDyASHyAY0BAVf2AR/8AUABZf8BH4UCQAFdmAJRmAJVAUaUAimUAoMBAUCfAimfAo0BATmJAw21AxoBHroDDc0DFwESzwMLzwOBAQEQfRN9jgEC6AF2F3ZxAuEBiQETiQFeAtkBhAEThAF/AtIBnwETnwF3AsoBkgEXkgFxArUB9gGRAfYBsAEBbPkBJfkBrgEBZv8BkQH/AbABAWSCAiWCAq4BAV6NAw+tAxkBKK4DD7QDGwEfxQMTxQNtARjKAxPKA2oBE88DXc8DfgERmAMVmANvATCqAxWqA2wBKp8DGaMDKwEpsQMVsQN5ASI=</sads:DebugSymbol.Symbol>
+  </p:Parallel>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Receive_2" sap:VirtualizedContainerService.HintSize="254.4,92.8" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="254.4,62.4" />
+      <sap2010:ViewStateData Id="SendReply_2" sap:VirtualizedContainerService.HintSize="254.4,92.8" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="276.8,452.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Receive_5" sap:VirtualizedContainerService.HintSize="254.4,92.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Send_1" sap:VirtualizedContainerService.HintSize="254.4,92.8" />
+      <sap2010:ViewStateData Id="ReceiveReply_1" sap:VirtualizedContainerService.HintSize="254.4,92.8" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ProvideFeedbackToCandidate_1" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="ProvideFeedbackToCandidate_2" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,212.8" />
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="243.2,62.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="HireCandidate_1" sap:VirtualizedContainerService.HintSize="243.2,22.4" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">0,763.6</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="243.2,62.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ProvideFeedbackToCandidate_3" sap:VirtualizedContainerService.HintSize="243.2,22.4" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="243.2,62.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_7">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">440,563.6</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">466.8,298.36 466.8,328.36 446.8,328.36 446.8,338.36</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">338.4,708.8</av:Point>
+            <av:Size x:Key="ShapeSize">243.2,62.4</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">460,708.8 460,678.8 540,678.8 540,616.4</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_2" sap:VirtualizedContainerService.HintSize="70.4,87.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">84.8,626.4</av:Point>
+            <av:Size x:Key="ShapeSize">70.4,87.2</av:Size>
+            <av:PointCollection x:Key="TrueConnector">84.8,670 70,670 70,733.6 100,733.6 100,763.6</av:PointCollection>
+            <av:PointCollection x:Key="FalseConnector">155.2,670 185.2,670 185.2,740 338.4,740</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">40,533.6</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">140,586.4 140,616.4 120,616.4 120,626.4</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">50,433.6</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">150,486.4 150,516.4 140,516.4 140,533.6</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="243.2,62.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_9">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">418.4,438.8</av:Point>
+            <av:Size x:Key="ShapeSize">243.2,62.4</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">540,501.2 540,563.6</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_1" sap:VirtualizedContainerService.HintSize="92.8,87.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">264.8,316.4</av:Point>
+            <av:Size x:Key="ShapeSize">92.8,87.2</av:Size>
+            <av:PointCollection x:Key="FalseConnector">357.6,360 540,360 540,438.8</av:PointCollection>
+            <av:PointCollection x:Key="TrueConnector">264.8,360 150,360 150,433.6</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">210,213.6</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">310,266.4 310,296.4 311.2,296.4 311.2,316.4</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,123.6</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,176.4 300,206.4 310,206.4 310,213.6</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="878.4,926.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,123.6</av:PointCollection>
+            <x:Double x:Key="Height">890.32</x:Double>
+            <x:Double x:Key="Width">864.8</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Receive_3" sap:VirtualizedContainerService.HintSize="254.4,92.8" />
+      <sap2010:ViewStateData Id="SendReply_3" sap:VirtualizedContainerService.HintSize="254.4,92.8" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="276.8,350.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PickBranch_1" sap:VirtualizedContainerService.HintSize="307.2,609.6" />
+      <sap2010:ViewStateData Id="Receive_4" sap:VirtualizedContainerService.HintSize="254.4,92.8" />
+      <sap2010:ViewStateData Id="TerminateWorkflow_1" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="PickBranch_2" sap:VirtualizedContainerService.HintSize="284.8,609.6" />
+      <sap2010:ViewStateData Id="Pick_1" sap:VirtualizedContainerService.HintSize="745.6,656" />
+      <sap2010:ViewStateData Id="While_1" sap:VirtualizedContainerService.HintSize="771.2,817.6" />
+      <sap2010:ViewStateData Id="Parallel_1" sap:VirtualizedContainerService.HintSize="1124.8,864" />
+      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="1155.2,934.4" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</WorkflowService>

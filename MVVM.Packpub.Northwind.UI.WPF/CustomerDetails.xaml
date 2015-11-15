@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="MVVM.Packpub.Northwind.UI.WPF.CustomerDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Skins/MainSkin.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Padding="5"
+                Margin="4"
+                CornerRadius="5"
+                Background="{StaticResource 
+                    mainBlueBrush}">
+            <TextBlock Text="Customer Details"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="12" />
+        </Border>
+        <GroupBox Header="Details"
+                  MinHeight="240"
+                  Grid.Row="1"
+                  DockPanel.Dock="Bottom">
+            <Grid Margin="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="6" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Content="Company Name:"
+                       HorizontalAlignment="Right" />
+                <TextBox Text="{Binding Customer.CompanyName, 
+                         UpdateSourceTrigger=PropertyChanged}"
+                         Grid.Column="2" />
+                <Label Content="Contact Name:"
+                       Grid.Row="1"
+                       HorizontalAlignment="Right" />
+                <TextBox Text="{Binding Customer.ContactName, 
+                         UpdateSourceTrigger=PropertyChanged}"
+                         Grid.Row="1"
+                         Grid.Column="2" />
+                <Label Content="Phone Number:"
+                       Grid.Row="2"
+                       HorizontalAlignment="Right" />
+                <TextBox Text="{Binding Customer.Phone, 
+                         UpdateSourceTrigger=PropertyChanged}"
+                         Grid.Row="2"
+                         Grid.Column="2" />
+                <Label Content="Address:"
+                       Grid.Row="3"
+                       HorizontalAlignment="Right" />
+                <TextBox Text="{Binding Customer.Address, 
+                         UpdateSourceTrigger=PropertyChanged}"
+                         Grid.Row="3"
+                         Grid.Column="2" />
+                <Label Content="City:"
+                       Grid.Row="4"
+                       HorizontalAlignment="Right" />
+                <TextBox Text="{Binding Customer.City, 
+                         UpdateSourceTrigger=PropertyChanged}"
+                         Grid.Row="4"
+                         Grid.Column="2" />
+                <Label Content="Region:"
+                       Grid.Row="5"
+                       HorizontalAlignment="Right" />
+                <TextBox Text="{Binding Customer.Region, 
+                         UpdateSourceTrigger=PropertyChanged}"
+                         Grid.Row="5"
+                         Grid.Column="2" />
+                <Label Content="Country:"
+                       Grid.Row="6"
+                       HorizontalAlignment="Right" />
+                <TextBox Text="{Binding Customer.Country, 
+                         UpdateSourceTrigger=PropertyChanged}"
+                         Grid.Row="6"
+                         Grid.Column="2" />
+                <Label Content="Zip:"
+                       Grid.Row="7"
+                       HorizontalAlignment="Right" />
+                <TextBox Text="{Binding Customer.PostalCode, 
+                         UpdateSourceTrigger=PropertyChanged}"
+                         Grid.Row="7"
+                         Grid.Column="2" />
+                <Button Command="{Binding UpdateCommand}"
+                    Grid.Row="8"
+                    Content="Update" />
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Orders" Grid.Row="2">
+            <ContentControl Content="{Binding Orders}" />
+        </GroupBox>
+
+    </Grid>
+</UserControl>

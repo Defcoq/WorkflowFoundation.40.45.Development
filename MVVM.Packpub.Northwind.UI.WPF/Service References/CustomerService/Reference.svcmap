@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="61d4aa6d-dd87-4838-80dc-3b598e74f9de" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/MVVM_Packpub.Northwind.Service/CustomerService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="a4633bbd-4acb-44fc-865b-18a2756afb74" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MVVM_Packpub.Northwind.Service/CustomerService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="3c229be7-2373-4b2e-8c5d-34f41dfa41fa" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MVVM_Packpub.Northwind.Service/CustomerService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="14541c8a-5b7b-464c-9cdf-356ac82e2025" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MVVM_Packpub.Northwind.Service/CustomerService/mex" />
+    <MetadataFile FileName="MVVM.Packpub.Northwind.Service.xsd" MetadataType="Schema" ID="f5874327-f5c9-4763-be94-b3935374d058" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MVVM_Packpub.Northwind.Service/CustomerService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

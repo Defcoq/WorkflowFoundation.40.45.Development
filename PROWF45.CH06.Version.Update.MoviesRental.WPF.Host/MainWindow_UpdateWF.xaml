@@ -1,0 +1,20 @@
+﻿<Window x:Class="PROWF45.CH06.Version.Update.MoviesRental.WPF.Host.MainWindow_UpdateWF"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow_UpdateWF" Height="356.034" Width="479.31">
+    <Grid Margin="0,0,2,3">
+        <Button Name="cmdWorkflowUpdate" Content="Save Original Snapshot" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="149" Click="cmdWorkflowUpdate_Click"/>
+        <TextBox Name="txtWorkflowFile" HorizontalAlignment="Left" Height="38" Margin="10,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="457"/>
+        <Button Name="cmdSearchWorkflow" Content="Set Workflow to Update" HorizontalAlignment="Left" Margin="325,75,0,0" VerticalAlignment="Top" Width="142" Click="cmdSearchWorkflow_Click"/>
+        <Label Content="Original Workflow Path" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="133"/>
+        <Button Name="cmdSaveUpdateMap" Content="Save Update Map" HorizontalAlignment="Left" Margin="10,245,0,0" VerticalAlignment="Top" Width="149" Click="cmdSaveUpdateMap_Click"/>
+        <TextBox x:Name="txtUpdateMapFile" HorizontalAlignment="Left" Height="36" Margin="10,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="457"/>
+        <Button x:Name="cmdSetMapPath" Content="Set Map Path" HorizontalAlignment="Left" Margin="359,245,0,0" VerticalAlignment="Top" Width="108" Click="cmdSetMapPath_Click"/>
+        <Label Content="Update Map Path" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Width="114"/>
+        <TextBox x:Name="txtUpdateInstance" HorizontalAlignment="Left" Height="23" Margin="10,298,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="223"/>
+        <Button x:Name="cmdUpdateInstance" Content="Update Instance" HorizontalAlignment="Left" Margin="238,299,0,0" VerticalAlignment="Top" Width="96" Click="cmdUpdateInstance_Click"/>
+        <TextBox x:Name="txtWorkflowSnapshot" HorizontalAlignment="Left" Height="36" Margin="10,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="457"/>
+        <Button x:Name="cmdSetSnapshot" Content="Set Snapshot" HorizontalAlignment="Left" Margin="383,167,0,0" VerticalAlignment="Top" Width="84" Click="cmdSetSnapshot_Click"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,27 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="BillingService.WCF.BillingService" %>
+
+namespace BillingService.WCF
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.ServiceModel;
+    using BusinessEntities;
+
+    [ServiceContract]
+    public class BillingService
+    {
+        ClaimRepository claimRepository = new ClaimRepository();
+
+        [OperationContract]
+        public string ProcessClaim(int claimId)
+        {
+            Claim claim = claimRepository.GetClaim(claimId);
+            if (claim != null)
+                return "Complete";
+            else
+                return "Error";
+        }
+    }
+}

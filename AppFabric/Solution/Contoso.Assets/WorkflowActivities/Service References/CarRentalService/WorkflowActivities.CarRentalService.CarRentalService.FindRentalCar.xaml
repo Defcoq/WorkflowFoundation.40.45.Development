@@ -1,0 +1,54 @@
+﻿<Activity x:Class="WorkflowActivities.CarRentalService.Activities.FindRentalCar" this:FindRentalCar.EndpointConfigurationName="BasicHttpBinding_CarRentalService" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://tempuri.org/" xmlns:p1="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel" xmlns:this="clr-namespace:WorkflowActivities.CarRentalService.Activities" xmlns:wc="clr-namespace:WorkflowActivities.CarRentalService;assembly=WorkflowActivities, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:wc1="clr-namespace:WorkflowActivities.CarRentalService;assembly=WorkflowActivities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="EndpointConfigurationName" Type="x:String" />
+    <x:Property Name="claimId" Type="InArgument(x:Int32)" />
+    <x:Property Name="FindRentalCarResult" Type="OutArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>Assembly references and imported namespaces serialized as XML namespaces</mva:VisualBasic.Settings>
+  <Sequence>
+    <Sequence.Variables>
+      <x:Reference>__ReferenceID1</x:Reference>
+      <x:Reference>__ReferenceID2</x:Reference>
+    </Sequence.Variables>
+    <p1:Send x:Name="__ReferenceID0" Action="http://tempuri.org/CarRentalService/FindRentalCar" OperationName="FindRentalCar" ServiceContractName="p:CarRentalService">
+      <p1:Send.CorrelationInitializers>
+        <p1:RequestReplyCorrelationInitializer>
+          <p1:RequestReplyCorrelationInitializer.CorrelationHandle>
+            <InArgument x:TypeArguments="p1:CorrelationHandle">
+              <VariableValue x:TypeArguments="p1:CorrelationHandle">
+                <VariableValue.Variable>
+                  <Variable x:TypeArguments="p1:CorrelationHandle" x:Name="__ReferenceID2" />
+                </VariableValue.Variable>
+              </VariableValue>
+            </InArgument>
+          </p1:RequestReplyCorrelationInitializer.CorrelationHandle>
+        </p1:RequestReplyCorrelationInitializer>
+      </p1:Send.CorrelationInitializers>
+      <p1:Send.EndpointConfigurationName>
+        <PropertyReference x:TypeArguments="x:String" PropertyName="EndpointConfigurationName" />
+      </p1:Send.EndpointConfigurationName>
+      <p1:SendMessageContent>
+        <InArgument x:TypeArguments="wc1:FindRentalCarRequest">[New WorkflowActivities.CarRentalService.FindRentalCarRequest() With { .claimId = claimId }]</InArgument>
+      </p1:SendMessageContent>
+    </p1:Send>
+    <p1:ReceiveReply Request="{x:Reference __ReferenceID0}" Action="http://tempuri.org/CarRentalService/FindRentalCarResponse">
+      <p1:ReceiveMessageContent>
+        <OutArgument x:TypeArguments="wc1:FindRentalCarResponse">
+          <VariableReference x:TypeArguments="wc1:FindRentalCarResponse">
+            <VariableReference.Variable>
+              <Variable x:TypeArguments="wc1:FindRentalCarResponse" x:Name="__ReferenceID1" Name="tempResult" />
+            </VariableReference.Variable>
+          </VariableReference>
+        </OutArgument>
+      </p1:ReceiveMessageContent>
+    </p1:ReceiveReply>
+    <Assign>
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[FindRentalCarResult]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[tempResult.FindRentalCarResult]</InArgument>
+      </Assign.Value>
+    </Assign>
+  </Sequence>
+</Activity>

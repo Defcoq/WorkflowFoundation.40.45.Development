@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f2d26cb9-34b9-443d-bced-1e51ad64e129" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:90/AppraisalService.WCF/AppraisalService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AppraisalService.disco" MetadataType="Disco" ID="4c63d3ef-e0ed-45fd-8a3e-7206febf6c8f" SourceId="1" SourceUrl="http://localhost:90/AppraisalService.WCF/AppraisalService.svc?disco" />
+    <MetadataFile FileName="AppraisalService.xsd" MetadataType="Schema" ID="5488c024-e197-4f64-bfdf-8aa013eb9e54" SourceId="1" SourceUrl="http://localhost:90/AppraisalService.WCF/AppraisalService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AppraisalService.wsdl" MetadataType="Wsdl" ID="e9e890c9-6479-4a99-bb51-b6cd2002fa77" SourceId="1" SourceUrl="http://localhost:90/AppraisalService.WCF/AppraisalService.svc?wsdl" />
+    <MetadataFile FileName="AppraisalService1.xsd" MetadataType="Schema" ID="0cf17721-0ac6-4017-a599-30a7644f32ea" SourceId="1" SourceUrl="http://localhost:90/AppraisalService.WCF/AppraisalService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AppraisalService2.xsd" MetadataType="Schema" ID="87726d88-a233-4e53-b02e-0a8a2c2fae9a" SourceId="1" SourceUrl="http://localhost:90/AppraisalService.WCF/AppraisalService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

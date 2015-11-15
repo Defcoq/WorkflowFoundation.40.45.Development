@@ -1,0 +1,16 @@
+﻿<Application x:Class="MVVM.Packpub.Northwind.UI.WPF.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:src="clr-namespace:MVVM.Packpub.Northwind.UI.WPF"
+             StartupUri="MainWindow.xaml" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" 
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+  <!--<Application.Resources>
+    --><!--<ResourceDictionary>
+      <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:MVVM.Packpub.Northwind.UI.WPF.ViewModel" />
+    </ResourceDictionary>--><!--
+  </Application.Resources>-->
+    <Application.Resources>
+        <ObjectDataProvider x:Key="BootStrapper" ObjectType="src:BootStrapper" />
+    </Application.Resources>
+
+</Application>

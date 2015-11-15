@@ -1,0 +1,421 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="UpdateInventoryManualComp"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:pca="clr-namespace:PROWF40.CH13.AdventureWorksAccess;assembly=PROWF40.CH13.AdventureWorksAccess"
+ xmlns:pchcbac="clr-namespace:PROWF40.CH08.Host.Com.BookMark.ActivityLibrary.CH13;assembly=PROWF40.CH08.Host.Com.BookMark.ActivityLibrary"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="ArgSalesOrderId" Type="InArgument(x:Int32)" />
+    <x:Property Name="ArgIsDemoException" Type="InArgument(x:Boolean)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>PROWF40.CH08.Host.Com.Console.BookmarkCalculator.CH13.Exeption.Handling.UpdateInventory_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>PROWF40.CH13.AdventureWorksAccess</x:String>
+      <x:String>System.Activities.Statements</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PROWF40.CH08.Host.Com.BookMark.ActivityLibrary</AssemblyReference>
+      <AssemblyReference>System.Transactions</AssemblyReference>
+      <AssemblyReference>System.Data.Linq</AssemblyReference>
+      <AssemblyReference>PROWF40.CH13.AdventureWorksAccess</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PROWF40.CH08.Host.Com.Console.BookmarkCalculator</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="scg:List(pca:SalesOrderDetail)" Name="OrderDetail" />
+      <Variable x:TypeArguments="CompensationToken" Name="Token" />
+      <Variable x:TypeArguments="x:String" Name="variable1" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+        <pchcbac:GetOrderDetail sap2010:WorkflowViewState.IdRef="GetOrderDetail_1">
+          <pchcbac:GetOrderDetail.OrderDetail>
+            <OutArgument x:TypeArguments="scg:List(pca:SalesOrderDetail)">
+              <mca:CSharpReference x:TypeArguments="scg:List(pca:SalesOrderDetail)">OrderDetail</mca:CSharpReference>
+            </OutArgument>
+          </pchcbac:GetOrderDetail.OrderDetail>
+          <pchcbac:GetOrderDetail.SalesOrderId>
+            <InArgument x:TypeArguments="x:Int32">
+              <mca:CSharpValue x:TypeArguments="x:Int32">ArgSalesOrderId</mca:CSharpValue>
+            </InArgument>
+          </pchcbac:GetOrderDetail.SalesOrderId>
+        </pchcbac:GetOrderDetail>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID7">
+            <TryCatch>
+              <TryCatch.Try>
+                <Flowchart DisplayName="TCFlowchart">
+                  <Flowchart.StartNode>
+                    <FlowStep x:Name="__ReferenceID5">
+                      <CompensableActivity>
+                        <CompensableActivity.Result>
+                          <OutArgument x:TypeArguments="CompensationToken">
+                            <mca:CSharpReference x:TypeArguments="CompensationToken">Token</mca:CSharpReference>
+                          </OutArgument>
+                        </CompensableActivity.Result>
+                        <CompensableActivity.CompensationHandler>
+                          <pchcbac:ExternalVoid>
+                            <pchcbac:ExternalVoid.OrderDetail>
+                              <InArgument x:TypeArguments="scg:List(pca:SalesOrderDetail)">
+                                <mca:CSharpValue x:TypeArguments="scg:List(pca:SalesOrderDetail)">OrderDetail</mca:CSharpValue>
+                              </InArgument>
+                            </pchcbac:ExternalVoid.OrderDetail>
+                            <pchcbac:ExternalVoid.SalesOrderId>
+                              <InArgument x:TypeArguments="x:Int32">
+                                <mca:CSharpValue x:TypeArguments="x:Int32">ArgSalesOrderId</mca:CSharpValue>
+                              </InArgument>
+                            </pchcbac:ExternalVoid.SalesOrderId>
+                            <sap2010:WorkflowViewState.IdRef>ExternalVoid_2</sap2010:WorkflowViewState.IdRef>
+                          </pchcbac:ExternalVoid>
+                        </CompensableActivity.CompensationHandler>
+                        <CompensableActivity.ConfirmationHandler>
+                          <WriteLine Text="Confirmation Handled executed" sap2010:WorkflowViewState.IdRef="WriteLine_2" />
+                        </CompensableActivity.ConfirmationHandler>
+                        <pchcbac:ExternalUpdate>
+                          <pchcbac:ExternalUpdate.OrderDetail>
+                            <InArgument x:TypeArguments="scg:List(pca:SalesOrderDetail)">
+                              <mca:CSharpValue x:TypeArguments="scg:List(pca:SalesOrderDetail)">OrderDetail</mca:CSharpValue>
+                            </InArgument>
+                          </pchcbac:ExternalUpdate.OrderDetail>
+                          <pchcbac:ExternalUpdate.SalesOrderId>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <mca:CSharpValue x:TypeArguments="x:Int32">ArgSalesOrderId</mca:CSharpValue>
+                            </InArgument>
+                          </pchcbac:ExternalUpdate.SalesOrderId>
+                          <sap2010:WorkflowViewState.IdRef>ExternalUpdate_3</sap2010:WorkflowViewState.IdRef>
+                        </pchcbac:ExternalUpdate>
+                        <sap2010:WorkflowViewState.IdRef>CompensableActivity_2</sap2010:WorkflowViewState.IdRef>
+                      </CompensableActivity>
+                      <FlowStep.Next>
+                        <FlowStep x:Name="__ReferenceID4">
+                          <TransactionScope AbortInstanceOnTransactionFailure="False">
+                            <Flowchart DisplayName="TranscopeFlowchart">
+                              <Flowchart.StartNode>
+                                <FlowStep x:Name="__ReferenceID0">
+                                  <ForEach x:TypeArguments="pca:SalesOrderDetail" DisplayName="ApplyUpdate">
+                                    <ForEach.Values>
+                                      <InArgument x:TypeArguments="scg:IEnumerable(pca:SalesOrderDetail)">
+                                        <mca:CSharpValue x:TypeArguments="scg:IEnumerable(pca:SalesOrderDetail)">OrderDetail</mca:CSharpValue>
+                                      </InArgument>
+                                    </ForEach.Values>
+                                    <ActivityAction x:TypeArguments="pca:SalesOrderDetail">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="pca:SalesOrderDetail" Name="item" />
+                                      </ActivityAction.Argument>
+                                      <pchcbac:UpdateProductInventory>
+                                        <pchcbac:UpdateProductInventory.SalesDetail>
+                                          <InArgument x:TypeArguments="pca:SalesOrderDetail">
+                                            <mca:CSharpValue x:TypeArguments="pca:SalesOrderDetail">item</mca:CSharpValue>
+                                          </InArgument>
+                                        </pchcbac:UpdateProductInventory.SalesDetail>
+                                        <sap2010:WorkflowViewState.IdRef>UpdateProductInventory_3</sap2010:WorkflowViewState.IdRef>
+                                      </pchcbac:UpdateProductInventory>
+                                    </ActivityAction>
+                                    <sap2010:WorkflowViewState.IdRef>ForEach`1_5</sap2010:WorkflowViewState.IdRef>
+                                  </ForEach>
+                                  <FlowStep.Next>
+                                    <FlowDecision x:Name="__ReferenceID2">
+                                      <FlowDecision.Condition>
+                                        <mca:CSharpValue x:TypeArguments="x:Boolean">ArgIsDemoException</mca:CSharpValue>
+                                      </FlowDecision.Condition>
+                                      <FlowDecision.True>
+                                        <FlowStep x:Name="__ReferenceID3">
+                                          <Throw>
+                                            <InArgument x:TypeArguments="s:Exception">
+                                              <mca:CSharpValue x:TypeArguments="s:Exception">new DivideByZeroException("Throw new Exception from test JP")</mca:CSharpValue>
+                                            </InArgument>
+                                            <sap2010:WorkflowViewState.IdRef>Throw_3</sap2010:WorkflowViewState.IdRef>
+                                          </Throw>
+                                          <sap2010:WorkflowViewState.IdRef>FlowStep_11</sap2010:WorkflowViewState.IdRef>
+                                        </FlowStep>
+                                      </FlowDecision.True>
+                                      <FlowDecision.False>
+                                        <FlowStep x:Name="__ReferenceID1">
+                                          <ForEach x:TypeArguments="pca:SalesOrderDetail" DisplayName="InsertToHistory">
+                                            <ForEach.Values>
+                                              <InArgument x:TypeArguments="scg:IEnumerable(pca:SalesOrderDetail)">
+                                                <mca:CSharpValue x:TypeArguments="scg:IEnumerable(pca:SalesOrderDetail)">OrderDetail</mca:CSharpValue>
+                                              </InArgument>
+                                            </ForEach.Values>
+                                            <ActivityAction x:TypeArguments="pca:SalesOrderDetail">
+                                              <ActivityAction.Argument>
+                                                <DelegateInArgument x:TypeArguments="pca:SalesOrderDetail" Name="item" />
+                                              </ActivityAction.Argument>
+                                              <pchcbac:InsertTranHistory>
+                                                <pchcbac:InsertTranHistory.SalesDetail>
+                                                  <InArgument x:TypeArguments="pca:SalesOrderDetail">
+                                                    <mca:CSharpValue x:TypeArguments="pca:SalesOrderDetail">item</mca:CSharpValue>
+                                                  </InArgument>
+                                                </pchcbac:InsertTranHistory.SalesDetail>
+                                                <sap2010:WorkflowViewState.IdRef>InsertTranHistory_3</sap2010:WorkflowViewState.IdRef>
+                                              </pchcbac:InsertTranHistory>
+                                            </ActivityAction>
+                                            <sap2010:WorkflowViewState.IdRef>ForEach`1_6</sap2010:WorkflowViewState.IdRef>
+                                          </ForEach>
+                                          <sap2010:WorkflowViewState.IdRef>FlowStep_12</sap2010:WorkflowViewState.IdRef>
+                                        </FlowStep>
+                                      </FlowDecision.False>
+                                      <sap2010:WorkflowViewState.IdRef>FlowDecision_3</sap2010:WorkflowViewState.IdRef>
+                                    </FlowDecision>
+                                  </FlowStep.Next>
+                                  <sap2010:WorkflowViewState.IdRef>FlowStep_13</sap2010:WorkflowViewState.IdRef>
+                                </FlowStep>
+                              </Flowchart.StartNode>
+                              <x:Reference>__ReferenceID0</x:Reference>
+                              <x:Reference>__ReferenceID1</x:Reference>
+                              <x:Reference>__ReferenceID2</x:Reference>
+                              <x:Reference>__ReferenceID3</x:Reference>
+                              <sap2010:WorkflowViewState.IdRef>Flowchart_3</sap2010:WorkflowViewState.IdRef>
+                            </Flowchart>
+                            <sap2010:WorkflowViewState.IdRef>TransactionScope_2</sap2010:WorkflowViewState.IdRef>
+                          </TransactionScope>
+                          <sap2010:WorkflowViewState.IdRef>FlowStep_14</sap2010:WorkflowViewState.IdRef>
+                        </FlowStep>
+                      </FlowStep.Next>
+                      <sap2010:WorkflowViewState.IdRef>FlowStep_15</sap2010:WorkflowViewState.IdRef>
+                    </FlowStep>
+                  </Flowchart.StartNode>
+                  <x:Reference>__ReferenceID4</x:Reference>
+                  <x:Reference>__ReferenceID5</x:Reference>
+                  <sap2010:WorkflowViewState.IdRef>Flowchart_4</sap2010:WorkflowViewState.IdRef>
+                </Flowchart>
+              </TryCatch.Try>
+              <TryCatch.Catches>
+                <Catch x:TypeArguments="s:ArithmeticException">
+                  <ActivityAction x:TypeArguments="s:ArithmeticException">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="s:ArithmeticException" Name="exception" />
+                    </ActivityAction.Argument>
+                    <Sequence>
+                      <WriteLine>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String">String.Format("Caught ArithmeticException: {0}",exception.Message)</mca:CSharpValue>
+                        </InArgument>
+                        <sap2010:WorkflowViewState.IdRef>WriteLine_3</sap2010:WorkflowViewState.IdRef>
+                      </WriteLine>
+                      <Compensate>
+                        <Compensate.Target>
+                          <InArgument x:TypeArguments="CompensationToken">
+                            <mca:CSharpValue x:TypeArguments="CompensationToken">Token</mca:CSharpValue>
+                          </InArgument>
+                        </Compensate.Target>
+                        <sap2010:WorkflowViewState.IdRef>Compensate_1</sap2010:WorkflowViewState.IdRef>
+                      </Compensate>
+                      <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
+                    </Sequence>
+                  </ActivityAction>
+                  <sap2010:WorkflowViewState.IdRef>Catch`1_1</sap2010:WorkflowViewState.IdRef>
+                </Catch>
+              </TryCatch.Catches>
+              <sap2010:WorkflowViewState.IdRef>TryCatch_1</sap2010:WorkflowViewState.IdRef>
+            </TryCatch>
+            <sap2010:WorkflowViewState.IdRef>FlowStep_16</sap2010:WorkflowViewState.IdRef>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <sads:DebugSymbol.Symbol>d7oBQzpcV29ya3NhcGNlXHJlcG9zXGRvdC5uZXQgZGV2ZWxvcG1lbnRcV29ya2Zsb3dGb3VuZGF0aW9uLjQwLjQ1LkRldmVsb3BtZW50XFBST1dGNDAuQ0gwOC5Ib3N0LkNvbS5Db25zb2xlLkJvb2ttYXJrQ2FsY3VsYXRvclxDSDEzLkV4ZXB0aW9uLkhhbmRsaW5nXFVwZGF0ZUludmVudG9yeU1hbnVhbENvbXBlbnNhdGlvbi54YW1sIjUD+gEPAgEBPQlIIgIBZksN8QEYAgECRQ9FWwIBbUAPQHYCAWdNEdMBHQIBFNsBFesBIAIBA1AXdi0CAUN5G8kBLgIBFdwBF+EBIwIBDOIBF+kBJAIBBFMdU3ECAURoGXQyAgFZVxtjMgIBTGYbZnsCAUp6HccBKQIBF94BG94BmwECAQ3lAR3lAWkCAQVwH3BrAgFgax9rfgIBWl8hX20CAVNaIVqAAQIBTWYrZkoCAUt9I5EBLQIBNJUBKZUBegIBLqQBK7gBNQIBH5kBK54BMwIBGIABKYABjwECAT2HASeOAUgCATWnATGnAZcBAgEorgEvtQFLAgEgmwEvmwGtAQIBGYoBLYoBewIBNrEBNbEBgwECASE=</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="GetOrderDetail_1" sap:VirtualizedContainerService.HintSize="200,22.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExternalVoid_2" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="211.2,62.4" />
+      <sap2010:ViewStateData Id="ExternalUpdate_3" sap:VirtualizedContainerService.HintSize="200,22.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CompensableActivity_2" sap:VirtualizedContainerService.HintSize="209.6,62.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="UpdateProductInventory_3" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="ForEach`1_5" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="Throw_3" sap:VirtualizedContainerService.HintSize="200,22.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_11">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">0,348.8</av:Point>
+            <av:Size x:Key="ShapeSize">200,22.4</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InsertTranHistory_3" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="ForEach`1_6" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="FlowStep_12">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">335.4,305.74</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_3" sap:VirtualizedContainerService.HintSize="70.4,87.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">215,288.12</av:Point>
+            <av:Size x:Key="ShapeSize">70.4,87.2</av:Size>
+            <av:PointCollection x:Key="TrueConnector">215,331.72 200,331.72 200,360</av:PointCollection>
+            <av:PointCollection x:Key="FalseConnector">285.4,331.72 315.4,331.72 315.4,332.14 335.4,332.14</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_13">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">150,185.32</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">250,238.12 250,268.12 250.2,268.12 250.2,288.12</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_3" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,107.7 250,107.7 250,185.32</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TransactionScope_2" sap:VirtualizedContainerService.HintSize="209.6,62.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_14">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">251.6,277.64</av:Point>
+            <av:Size x:Key="ShapeSize">209.6,62.4</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_15">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">261.6,157.64</av:Point>
+            <av:Size x:Key="ShapeSize">209.6,62.4</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">366.4,220.04 366.4,250.04 356.4,250.04 356.4,277.64</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_4" sap:VirtualizedContainerService.HintSize="614.4,636.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.4</av:Point>
+            <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.6 300,107.6 366.4,107.6 366.4,157.64</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_3" sap:VirtualizedContainerService.HintSize="211.2,62.4" />
+      <sap2010:ViewStateData Id="Compensate_1" sap:VirtualizedContainerService.HintSize="211.2,22.4" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="233.6,249.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="403.2,22.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_16">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">260,243.6</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">300,127.7</av:Point>
+            <av:Size x:Key="ShapeSize">200,22.4</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">400,150.1 400,180.1 360,180.1 360,243.6</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614.4,636.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,107.7 400,107.7 400,127.7</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PROWF40.CH08.Host.Com.Console.BookmarkCalculator.CH13.Exeption.Handling.UpdateInventory_1" sap:VirtualizedContainerService.HintSize="654.4,716.8" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

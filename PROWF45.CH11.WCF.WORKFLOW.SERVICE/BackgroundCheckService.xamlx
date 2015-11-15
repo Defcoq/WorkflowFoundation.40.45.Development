@@ -1,0 +1,104 @@
+﻿<WorkflowService mc:Ignorable="sap sap2010 sads" p:TextExpression.Namespaces="{x:Reference __ReferenceID1}" p:TextExpression.References="{x:Reference __ReferenceID2}" ConfigurationName="BackgroundCheckService" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" Name="BackgroundCheckService"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Sequence DisplayName="Sequential Service">
+    <p:TextExpression.Namespaces>
+      <sco:Collection x:TypeArguments="x:String" x:Name="__ReferenceID1">
+        <x:String>System</x:String>
+        <x:String>System.Collections.Generic</x:String>
+        <x:String>System.Data</x:String>
+        <x:String>System.Linq</x:String>
+        <x:String>System.Text</x:String>
+      </sco:Collection>
+    </p:TextExpression.Namespaces>
+    <p:TextExpression.References>
+      <sco:Collection x:TypeArguments="p:AssemblyReference" x:Name="__ReferenceID2">
+        <p:AssemblyReference>mscorlib</p:AssemblyReference>
+        <p:AssemblyReference>System</p:AssemblyReference>
+        <p:AssemblyReference>System.Core</p:AssemblyReference>
+        <p:AssemblyReference>System.Data</p:AssemblyReference>
+        <p:AssemblyReference>System.ServiceModel</p:AssemblyReference>
+        <p:AssemblyReference>System.Xml</p:AssemblyReference>
+      </sco:Collection>
+    </p:TextExpression.References>
+    <p:Sequence.Variables>
+      <p:Variable x:TypeArguments="x:Boolean" Name="ConvictedOfFelony" />
+      <p:Variable x:TypeArguments="x:String" Name="SSN" />
+    </p:Sequence.Variables>
+    <Receive x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="Accepts a SSN" CanCreateInstance="True" DisplayName="ReceiveRequest" OperationName="PerformBackgroundCheck" ServiceContractName="IBackgroundCheck">
+      <ReceiveMessageContent>
+        <p:OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">SSN</mca:CSharpReference>
+        </p:OutArgument>
+      </ReceiveMessageContent>
+      <sap2010:WorkflowViewState.IdRef>Receive_1</sap2010:WorkflowViewState.IdRef>
+    </Receive>
+    <p:Assign>
+      <p:Assign.To>
+        <p:OutArgument x:TypeArguments="x:Boolean">
+          <mca:CSharpReference x:TypeArguments="x:Boolean">ConvictedOfFelony</mca:CSharpReference>
+        </p:OutArgument>
+      </p:Assign.To>
+      <p:Assign.Value>
+        <p:InArgument x:TypeArguments="x:Boolean">
+          <mca:CSharpValue x:TypeArguments="x:Boolean">Convert.ToBoolean(new Random().Next(0,2))</mca:CSharpValue>
+        </p:InArgument>
+      </p:Assign.Value>
+      <sap2010:WorkflowViewState.IdRef>Assign_1</sap2010:WorkflowViewState.IdRef>
+    </p:Assign>
+    <p:Delay sap2010:Annotation.AnnotationText="Delays the workflow for 10 seconds simulating a human response" DisplayName="Simulate Check" Duration="00:00:10" sap2010:WorkflowViewState.IdRef="Delay_1" />
+    <SendReply Request="{x:Reference __ReferenceID0}" sap2010:Annotation.AnnotationText="returns a boolean based on if the SSN passed in has had a felony" DisplayName="SendResponse">
+      <SendMessageContent>
+        <p:InArgument x:TypeArguments="x:Boolean">
+          <mca:CSharpValue x:TypeArguments="x:Boolean">ConvictedOfFelony</mca:CSharpValue>
+        </p:InArgument>
+      </SendMessageContent>
+      <sap2010:WorkflowViewState.IdRef>SendReply_1</sap2010:WorkflowViewState.IdRef>
+    </SendReply>
+    <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
+    <sads:DebugSymbol.Symbol>d4oBQzpcV29ya3NhcGNlXHJlcG9zXGRvdC5uZXQgZGV2ZWxvcG1lbnRcV29ya2Zsb3dGb3VuZGF0aW9uLjQwLjQ1LkRldmVsb3BtZW50XFBST1dGNDUuQ0gxMS5XQ0YuV09SS0ZMT1cuU0VSVklDRVxCYWNrZ3JvdW5kQ2hlY2tTZXJ2aWNlLnhhbWx4CgwDRBABASQFKw8BDywFOBABCDkFOc4BAQY6BUERAQInCydUARA0CzRzAQwvCy9jAQk5lwE5oQEBBz0LPVsBAw==</sads:DebugSymbol.Symbol>
+  </p:Sequence>
+  <sap2010:WorkflowViewState.IdRef>WorkflowService_1</sap2010:WorkflowViewState.IdRef>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Receive_1" sap:VirtualizedContainerService.HintSize="254.4,118.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="254.4,62.4" />
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="254.4,80">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SendReply_1" sap:VirtualizedContainerService.HintSize="254.4,134.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="276.8,640">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="307.2,710.4" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</WorkflowService>

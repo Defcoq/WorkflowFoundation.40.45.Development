@@ -1,0 +1,81 @@
+﻿<Window x:Class="BeginWF40.Extension.LeadGenerator.AddLead"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add Lead" Height="350" Width="525" Loaded="Window_Loaded">
+    <Grid MinWidth="300" MinHeight="100" Width="514">
+        <Label Height="30" Margin="5,10,10,10" Name="lblName" 
+         VerticalAlignment="Top" HorizontalAlignment="Left" Width="90" 
+         HorizontalContentAlignment="Right">Contact Name:</Label>
+        <Label Height="30" Margin="270,10,10,10" Name="lblPhone" 
+         VerticalAlignment="Top" HorizontalAlignment="Left" Width="90" 
+         HorizontalContentAlignment="Right">Phone Number:</Label>
+        <Label Height="30" Margin="5,40,10,10" Name="lblInterest" 
+         VerticalAlignment="Top" HorizontalAlignment="Left" Width="90" 
+         HorizontalContentAlignment="Right">Interested in:</Label>
+        <Label Height="30" Margin="5,70,10,10" Name="lblNotes" 
+         VerticalAlignment="Top" HorizontalAlignment="Left" Width="90" 
+         HorizontalContentAlignment="Right" Content="Notes:"></Label>
+        <Label Height="30" Margin="430,70,10,10" Name="lblRating"
+         VerticalAlignment="Top" HorizontalAlignment="Left" Width="20" 
+         HorizontalContentAlignment="Right" Content="$"></Label>
+        <TextBox Height="25" Margin="100,10,10,10" Name="txtName" 
+         VerticalAlignment="Top" HorizontalAlignment="Left" Width="170" />
+        <TextBox Height="25" Margin="365,10,10,10" Name="txtPhone" 
+         VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" />
+        <TextBox Height="25" Margin="100,40,10,10" Name="txtInterest" 
+         VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" />
+        <TextBox Height="45" Margin="100,70,10,10" Name="txtNotes" 
+         VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" 
+         VerticalScrollBarVisibility="Auto" AcceptsReturn="True" />
+        <TextBox Height="25" Margin="450,70,10,10" Name="txtRating" 
+         VerticalAlignment="Top" HorizontalAlignment="Left" Width="30" />
+        <Button Height="23" Margin="410,40,10,10" Name="btnLead" 
+         VerticalAlignment="Top" HorizontalAlignment="Left" Width="70" 
+         Click="btnAddLead_Click">Add Lead</Button>
+
+        <ListView x:Name="lstLeads" Margin="10,125,10,10" Height="145" 
+         VerticalAlignment="Top" ItemsSource="{Binding}" 
+         HorizontalContentAlignment="Center"
+         SelectionChanged="lstLeads_SelectionChanged" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Current Leads" Width="480">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding ContactName}" 
+                                     Width="110"/>
+                                    <TextBlock Text="{Binding ContactPhone}" 
+                                     Width="70"/>
+                                    <TextBlock Text="{Binding Interests}" 
+                                     Width="130"/>
+                                    <TextBlock Text="{Binding Status}" 
+                                     Width="70"/>
+                                    <TextBlock Text="{Binding AssignedTo}" 
+                                     Width="100"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Height="37" HorizontalAlignment="Stretch" Margin="10,272,5,10" 
+         Name="lblSelectedNotes" VerticalAlignment="Top" Visibility="Hidden" />
+
+        <Label Height="30" Margin="10,0,0,140" Name="lblAgent" 
+         VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="40" 
+         HorizontalContentAlignment="Left" Visibility="Hidden">Agent:</Label>
+        <TextBox Height="25" Margin="60,0,0,140" Name="txtAgent" 
+         VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="190" 
+         Visibility="Hidden" />
+        <Button Height="25" Margin="270,0,0,140" Name="btnAssign" 
+         VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="90" 
+         Click="btnAssign_Click" Visibility="Hidden">Assign Agent</Button>
+
+        <Label Height="27" HorizontalAlignment="Left" Margin="10,0,0,110" 
+         Name="lblEvent" VerticalAlignment="Bottom" Width="76">Event Log</Label>
+        <ListBox Margin="5,0,12,13.4" Name="lstEvents" Height="100" 
+         VerticalAlignment="Bottom" FontStretch="Condensed" FontSize="10" />
+    </Grid>
+</Window>

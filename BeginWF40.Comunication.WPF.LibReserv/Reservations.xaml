@@ -1,0 +1,60 @@
+﻿<Window x:Class="BeginWF40.Comunication.WPF.LibReserv.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Reservation" Height="350" Width="525" Loaded="Window_Loaded" Unloaded="Window_Unloaded">
+    <Grid>
+        <Label Height="40" HorizontalAlignment="Left" Margin="12,0,0,0"
+         Name="lblBranch" FontSize="24" VerticalAlignment="Top" Width="276"
+         FontStretch="Expanded">Library Branch</Label>
+        <ListView x:Name="requestList" Margin="12,42,12,5" Height="150"
+         VerticalAlignment="Top" ItemsSource="{Binding}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Request List" Width="610">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                     Text="{Binding Requester.BranchName}"
+ 
+                                     Width="100"/>
+                                    <TextBlock Text="{Binding Author}" Width="95"/>
+                                    <TextBlock Text="{Binding Title}" Width="180"/>
+                                    <TextBlock Text="{Binding ISBN}" Width="90"/>
+                                    <Button Content="Reserve"
+                                     Tag="{Binding InstanceID}"
+                                     Click="Reserve" Width="65"/>
+                                    <Button Content="Cancel"
+                                     Tag="{Binding InstanceID}"
+                                     Click="Cancel" Width="60"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Height="30" Margin="45,25,0,210" Name="label5"
+         VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="60"
+         HorizontalContentAlignment="Right">Author:</Label>
+        <Label Height="30" Margin="45,25,0,180" Name="label2"
+         VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="60"
+         HorizontalContentAlignment="Right">Title:</Label>
+        <Label Height="30" Margin="45,25,0,150" Name="label3"
+         VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="60"
+         HorizontalContentAlignment="Right">ISBN:</Label>
+        <TextBox Height="25" Margin="102,0,0,210" Name="txtAuthor"
+         VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" />
+        <TextBox Height="25" Margin="102,25,0,180" Name="txtTitle"
+         VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="300" />
+        <TextBox Height="25" Margin="102,25,0,150" Name="txtISBN"
+         VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" />
+        <Button Height="23" Margin="250,25,12,150" Name="btnRequest"
+         VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="98"
+         Click="btnRequest_Click">Send Request</Button>
+        <Label Height="27" HorizontalAlignment="Left" Margin="15,0,0,137"
+         Name="label4" VerticalAlignment="Bottom" Width="76">Event Log</Label>
+        <ListBox Margin="12,0,12,12" Name="lstEvents" Height="130"
+         VerticalAlignment="Bottom" FontStretch="Condensed" FontSize="10" />
+    </Grid>
+</Window>

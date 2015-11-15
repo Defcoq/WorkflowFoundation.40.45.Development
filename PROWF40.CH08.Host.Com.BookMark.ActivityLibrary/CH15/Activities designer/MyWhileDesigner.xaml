@@ -1,0 +1,32 @@
+﻿<sap:ActivityDesigner x:Class="PROWF40.CH08.Host.Com.BookMark.ActivityLibrary.CH15.Activities_designer.MyWhileDesigner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="clr-namespace:System;assembly=mscorlib"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation"
+                      Collapsible="False">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Condition" Grid.Row ="0" Grid.Column="0"
+HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <sapv:ExpressionTextBox HintText="Enter a condition"
+Grid.Row ="0" Grid.Column="1" MaxWidth="150" MinWidth="150" Margin="5"
+OwnerActivity="{Binding Path=ModelItem}" ExpressionType="{x:Type TypeName=s:Boolean}"
+Expression="{Binding Path=ModelItem.Condition, Mode=TwoWay}" />
+
+        <Border Grid.Row ="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5"
+MinHeight="40" BorderBrush="LightGray" BorderThickness="1" >
+            <sap:WorkflowItemPresenter HintText="Drop an activity here"
+Item="{Binding Path=ModelItem.Body, Mode=TwoWay}" />
+        </Border>
+
+    </Grid>
+</sap:ActivityDesigner>

@@ -1,0 +1,111 @@
+﻿<WorkflowService mc:Ignorable="sap" ConfigurationName="ProcessClaimServiceOld.WF" sap:VirtualizedContainerService.HintSize="852.8,1723.2" Name="ProcessClaimServiceOld.WF" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel" xmlns:b="clr-namespace:BusinessEntities;assembly=BusinessEntities" xmlns:b1="clr-namespace:BusinessEntities;assembly=BusinessEntities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:b2="clr-namespace:BusinessEntities;assembly=WorkflowActivities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:b3="clr-namespace:BusinessEntities;assembly=WorkflowActivities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="clr-namespace:Microsoft.VisualBasic;assembly=System" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:mvc="clr-namespace:Microsoft.VisualBasic.CompilerServices;assembly=Microsoft.VisualBasic, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:pa="clr-namespace:ProcessClaimService.AppraisalService;assembly=ProcessClaimService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:pa1="clr-namespace:ProcessClaimService.AppraisalService;assembly=ProcessClaimService" xmlns:pba="clr-namespace:ProcessClaimService.BillingService.Activities;assembly=ProcessClaimService" xmlns:pca="clr-namespace:ProcessClaimService.CarRentalService.Activities;assembly=ProcessClaimService" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:s1="clr-namespace:System;assembly=System" xmlns:s2="clr-namespace:System;assembly=System.Xml" xmlns:s3="clr-namespace:System;assembly=System.Core" xmlns:s4="clr-namespace:System;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System" xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=System.ServiceModel" xmlns:scg2="clr-namespace:System.Collections.Generic;assembly=System.Core" xmlns:scg3="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sd1="clr-namespace:System.Data;assembly=System.Data.DataSetExtensions" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core" xmlns:srs="clr-namespace:System.Runtime.Serialization;assembly=System.Runtime.Serialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:ssa="clr-namespace:System.ServiceModel.Activities;assembly=System.ServiceModel.Activities" xmlns:st="clr-namespace:System.Text;assembly=mscorlib" xmlns:w="clr-namespace:WorkflowActivities;assembly=WorkflowActivities" xmlns:wa="clr-namespace:WorkflowActivities.AppraisalService;assembly=WorkflowActivities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:wa1="clr-namespace:WorkflowActivities.AppraisalService;assembly=WorkflowActivities" xmlns:waa="clr-namespace:WorkflowActivities.AppraisalService.Activities;assembly=WorkflowActivities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Sequence DisplayName="Process Claim" sad:XamlDebuggerXmlReader.FileName="H:\Projects\AppFabric\Contoso\Solution\Contoso.Workflows\ProcessClaimService\ProcessClaimServiceOld.xamlx" sap:VirtualizedContainerService.HintSize="823.2,1693.6" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
+    <p:Sequence.Variables>
+      <p:Variable x:TypeArguments="CorrelationHandle" Name="handle" />
+      <p:Variable x:TypeArguments="b:Claim" Name="claim" />
+      <p:Variable x:TypeArguments="x:Boolean" Name="returnStatus" />
+      <p:Variable x:TypeArguments="x:String" Name="rentalCarConfirmation" />
+      <p:Variable x:TypeArguments="x:String" Name="billingStatus" />
+      <p:Variable x:TypeArguments="x:String" Name="saveResponse" />
+      <p:Variable x:TypeArguments="wa1:Claim" Name="proxyClaim" />
+    </p:Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg3:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Receive x:Name="__ReferenceID0" CanCreateInstance="True" DisplayName="ReceiveRequest" sap:VirtualizedContainerService.HintSize="800,92.8" OperationName="ProcessClaim" ServiceContractName="IProcessClaimService">
+      <Receive.CorrelationInitializers>
+        <RequestReplyCorrelationInitializer CorrelationHandle="[handle]" />
+      </Receive.CorrelationInitializers>
+      <Receive.KnownTypes>
+        <x:Type Type="b:Claim" />
+      </Receive.KnownTypes>
+      <ReceiveParametersContent>
+        <p:OutArgument x:TypeArguments="b:Claim" x:Key="claim">[claim]</p:OutArgument>
+      </ReceiveParametersContent>
+    </Receive>
+    <b3:Validate DisplayName="Validate Claim" Entity="[claim]" sap:VirtualizedContainerService.HintSize="800,22.4" IsValid="[returnStatus]" />
+    <p:If Condition="[returnStatus = False]" DisplayName="If Not Valid" sap:VirtualizedContainerService.HintSize="800,209.6">
+      <p:If.Then>
+        <p:TerminateWorkflow Exception="[New System.Exception(&quot;Claim is invalid&quot;)]" sap:VirtualizedContainerService.HintSize="268.8,100.8" />
+      </p:If.Then>
+    </p:If>
+    <pca:FindRentalCar FindRentalCarResult="[rentalCarConfirmation]" sap:VirtualizedContainerService.HintSize="800,22.4" claimId="[claim.ClaimId]" />
+    <p:Assign sap:VirtualizedContainerService.HintSize="800,59.2">
+      <p:Assign.To>
+        <p:OutArgument x:TypeArguments="x:String">[claim.RentalCar]</p:OutArgument>
+      </p:Assign.To>
+      <p:Assign.Value>
+        <p:InArgument x:TypeArguments="x:String">[rentalCarConfirmation]</p:InArgument>
+      </p:Assign.Value>
+    </p:Assign>
+    <pba:ProcessClaim sap:VirtualizedContainerService.HintSize="800,22.4" ProcessClaimResult="[billingStatus]" claimId="[claim.ClaimId]" />
+    <p:If Condition="[billingStatus = &quot;Complete&quot;]" sap:VirtualizedContainerService.HintSize="800,766.4">
+      <p:If.Then>
+        <p:Sequence DisplayName="Process Complete" sap:VirtualizedContainerService.HintSize="532.8,657.6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg3:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <p:Assign sap:VirtualizedContainerService.HintSize="510.4,59.2">
+            <p:Assign.To>
+              <p:OutArgument x:TypeArguments="x:String">[claim.Status]</p:OutArgument>
+            </p:Assign.To>
+            <p:Assign.Value>
+              <p:InArgument x:TypeArguments="x:String">[billingStatus]</p:InArgument>
+            </p:Assign.Value>
+          </p:Assign>
+          <p:Assign sap:VirtualizedContainerService.HintSize="510.4,59.2">
+            <p:Assign.To>
+              <p:OutArgument x:TypeArguments="s:Nullable(s:DateTime)">[claim.DateCreated]</p:OutArgument>
+            </p:Assign.To>
+            <p:Assign.Value>
+              <p:InArgument x:TypeArguments="s:Nullable(s:DateTime)">[Date.Now]</p:InArgument>
+            </p:Assign.Value>
+          </p:Assign>
+          <w:ClaimProcessingActivity Claim="[claim]" sap:VirtualizedContainerService.HintSize="510.4,22.4" ProxyClaim="[proxyClaim]" />
+          <waa:Save sap:VirtualizedContainerService.HintSize="510.4,22.4" SaveResult="[saveResponse]" claim="[proxyClaim]" />
+          <p:If Condition="[saveResponse = &quot;Saved&quot;]" DisplayName="If Saved Successfully" sap:VirtualizedContainerService.HintSize="510.4,209.6">
+            <p:If.Then>
+              <p:Assign sap:VirtualizedContainerService.HintSize="243.2,100.8">
+                <p:Assign.To>
+                  <p:OutArgument x:TypeArguments="x:Boolean">[returnStatus]</p:OutArgument>
+                </p:Assign.To>
+                <p:Assign.Value>
+                  <p:InArgument x:TypeArguments="x:Boolean">True</p:InArgument>
+                </p:Assign.Value>
+              </p:Assign>
+            </p:If.Then>
+            <p:If.Else>
+              <p:Assign sap:VirtualizedContainerService.HintSize="243.2,100.8">
+                <p:Assign.To>
+                  <p:OutArgument x:TypeArguments="x:Boolean">[returnStatus]</p:OutArgument>
+                </p:Assign.To>
+                <p:Assign.Value>
+                  <p:InArgument x:TypeArguments="x:Boolean">False</p:InArgument>
+                </p:Assign.Value>
+              </p:Assign>
+            </p:If.Else>
+          </p:If>
+        </p:Sequence>
+      </p:If.Then>
+      <p:If.Else>
+        <p:Assign sap:VirtualizedContainerService.HintSize="243.2,657.6">
+          <p:Assign.To>
+            <p:OutArgument x:TypeArguments="x:Boolean">[returnStatus]</p:OutArgument>
+          </p:Assign.To>
+          <p:Assign.Value>
+            <p:InArgument x:TypeArguments="x:Boolean">False</p:InArgument>
+          </p:Assign.Value>
+        </p:Assign>
+      </p:If.Else>
+    </p:If>
+    <SendReply Request="{x:Reference __ReferenceID0}" DisplayName="SendResponse" sap:VirtualizedContainerService.HintSize="800,92.8">
+      <SendParametersContent>
+        <p:InArgument x:TypeArguments="x:Boolean" x:Key="returnStatus">[returnStatus]</p:InArgument>
+      </SendParametersContent>
+    </SendReply>
+  </p:Sequence>
+</WorkflowService>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Claim">
+  <DataContextMoniker Name="/ClaimDataContext" />
+  <nestedChildShapes>
+    <classShape Id="bdbc0c8e-9404-4ef5-b38e-290e691c38d7" absoluteBounds="0.75, 0.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/ClaimDataContext/Claim" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7f0798c7-fbb5-469c-b20b-5bb94d4f2b7f" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f1aa4c18-6dfc-4ecf-80e6-78d79bee0c31" absoluteBounds="3.75, 0.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ClaimDataContext/Accident" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0f7eb720-e500-4233-a72f-206646daafbd" absoluteBounds="3.765, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.73159912109375); (3.75 : 1.73159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ClaimDataContext/Claim/Claim_Accident" />
+      <nodes>
+        <classShapeMoniker Id="bdbc0c8e-9404-4ef5-b38e-290e691c38d7" />
+        <classShapeMoniker Id="f1aa4c18-6dfc-4ecf-80e6-78d79bee0c31" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

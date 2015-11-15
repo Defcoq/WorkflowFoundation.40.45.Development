@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Exercise1.Core" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Exercise1.Core" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:51027/wfJobApplicationService.xamlx?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="JobApplication">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplyingCandidate" nillable="true" type="tns:Candidate" />
+      <xs:element minOccurs="0" name="JobPostingId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JobApplication" nillable="true" type="tns:JobApplication" />
+  <xs:complexType name="Candidate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CandidateId" type="xs:int" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSN" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Candidate" nillable="true" type="tns:Candidate" />
+  <xs:complexType name="JobApplicationStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="JobApplicationId" type="ser:guid" />
+      <xs:element minOccurs="0" name="JobAppliedTo" nillable="true" type="tns:JobPosting" />
+      <xs:element minOccurs="0" name="PassedBackgroundCheck" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PassedInterview" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SubmittedApplication" nillable="true" type="tns:JobApplication" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JobApplicationStatus" nillable="true" type="tns:JobApplicationStatus" />
+  <xs:complexType name="JobPosting">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HiringManager" nillable="true" type="tns:ContactManager" />
+      <xs:element minOccurs="0" name="JobPostingId" type="xs:int" />
+      <xs:element minOccurs="0" name="PositionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostingDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JobPosting" nillable="true" type="tns:JobPosting" />
+  <xs:complexType name="ContactManager">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ManagerId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContactManager" nillable="true" type="tns:ContactManager" />
+</xs:schema>

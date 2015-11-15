@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ContosoDB" Class="ClaimDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=ContosoDB;Integrated Security=True" SettingsObjectName="BusinessEntities.Properties.Settings" SettingsPropertyName="ContosoDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Claims" Member="Claims">
+    <Type Name="Claim">
+      <Column Name="ClaimId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AccidentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RentalCar" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Claim_Accident" Member="Accidents" ThisKey="AccidentId" OtherKey="AccidentId" Type="Accident" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Accidents" Member="Accidents">
+    <Type Name="Accident">
+      <Column Name="AccidentId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ContactPhone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Zip" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Claim_Accident" Member="Claim" ThisKey="AccidentId" OtherKey="AccidentId" Type="Claim" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AppraisalService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:90/AppraisalService.WCF/AppraisalService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:90/AppraisalService.WCF/AppraisalService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:90/AppraisalService.WCF/AppraisalService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BusinessEntities" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AppraisalService_FindAllClaims_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindAllClaims" />
+  </wsdl:message>
+  <wsdl:message name="AppraisalService_FindAllClaims_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindAllClaimsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppraisalService_FindPendingClaims_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindPendingClaims" />
+  </wsdl:message>
+  <wsdl:message name="AppraisalService_FindPendingClaims_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindPendingClaimsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppraisalService_GetLastClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastClaim" />
+  </wsdl:message>
+  <wsdl:message name="AppraisalService_GetLastClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppraisalService_GetClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClaim" />
+  </wsdl:message>
+  <wsdl:message name="AppraisalService_GetClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppraisalService_Save_InputMessage">
+    <wsdl:part name="parameters" element="tns:Save" />
+  </wsdl:message>
+  <wsdl:message name="AppraisalService_Save_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AppraisalService">
+    <wsdl:operation name="FindAllClaims">
+      <wsdl:input wsaw:Action="http://tempuri.org/AppraisalService/FindAllClaims" message="tns:AppraisalService_FindAllClaims_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AppraisalService/FindAllClaimsResponse" message="tns:AppraisalService_FindAllClaims_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPendingClaims">
+      <wsdl:input wsaw:Action="http://tempuri.org/AppraisalService/FindPendingClaims" message="tns:AppraisalService_FindPendingClaims_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AppraisalService/FindPendingClaimsResponse" message="tns:AppraisalService_FindPendingClaims_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/AppraisalService/GetLastClaim" message="tns:AppraisalService_GetLastClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AppraisalService/GetLastClaimResponse" message="tns:AppraisalService_GetLastClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/AppraisalService/GetClaim" message="tns:AppraisalService_GetClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AppraisalService/GetClaimResponse" message="tns:AppraisalService_GetClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <wsdl:input wsaw:Action="http://tempuri.org/AppraisalService/Save" message="tns:AppraisalService_Save_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AppraisalService/SaveResponse" message="tns:AppraisalService_Save_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_AppraisalService" type="tns:AppraisalService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FindAllClaims">
+      <soap:operation soapAction="http://tempuri.org/AppraisalService/FindAllClaims" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPendingClaims">
+      <soap:operation soapAction="http://tempuri.org/AppraisalService/FindPendingClaims" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastClaim">
+      <soap:operation soapAction="http://tempuri.org/AppraisalService/GetLastClaim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClaim">
+      <soap:operation soapAction="http://tempuri.org/AppraisalService/GetClaim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <soap:operation soapAction="http://tempuri.org/AppraisalService/Save" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AppraisalService">
+    <wsdl:port name="BasicHttpBinding_AppraisalService" binding="tns:BasicHttpBinding_AppraisalService">
+      <soap:address location="http://localhost:90/AppraisalService.WCF/AppraisalService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

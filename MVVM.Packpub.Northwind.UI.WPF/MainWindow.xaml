@@ -1,0 +1,118 @@
+﻿<Window x:Class="MVVM.Packpub.Northwind.UI.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525"
+        xmlns:ViewModel="clr-namespace:MVVM.Packpub.Northwind.ViewModel;assembly=MVVM.Packpub.Northwind.ViewModel"
+        xmlns:WPF="clr-namespace:MVVM.Packpub.Northwind.UI.WPF"
+         xmlns:Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        DataContext="{Binding Path=MainWindowViewModel, Source={StaticResource BootStrapper}}">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+              Source="Skins/MainSkin.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <DockPanel>
+        <Border DockPanel.Dock="Top"
+               Padding="10"
+                Margin="4"
+                CornerRadius="5"
+                Background="{StaticResource mainBlueBrush}">
+            <TextBlock Text="CRM Management By JP"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        FontSize="16" />
+        </Border>
+
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Expander Padding="10"
+                        Margin="4"
+                        BorderBrush="DarkGray"
+                        ExpandDirection="Right"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        IsExpanded="True">
+
+                <Expander.Header>
+                    <TextBlock Text="Control Panel"
+                                FontSize="14"
+                                FontWeight="Bold">
+                        <TextBlock.LayoutTransform>
+                            <RotateTransform Angle="90" />
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                </Expander.Header>
+                <StackPanel>
+                    <ListBox ItemsSource="{Binding Customers}"
+                        DisplayMemberPath="CompanyName"
+                         SelectedValuePath="CustomerID"
+                        VerticalAlignment="Top"
+                         SelectedValue="{Binding SelectedCustomerID}"
+
+                        Height="180"
+                        Width="250" >
+                        <!--<i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <Command:EventToCommand Command="{Binding ShowDetailsCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>-->
+
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListBoxItem}"
+                                    BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                   <EventSetter Event="MouseDoubleClick" Handler="ListBoxItem_MouseDoubleClick" />
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+
+                    </ListBox>
+                    <ContentControl Margin="0, 3">
+                        <Hyperlink Command="{Binding ShowDetailsCommand}">
+                            <TextBlock Text="Show Details" />
+                        </Hyperlink>
+                        <!--<Hyperlink Click="Hyperlink_Click">
+                            <TextBlock Text="Show Details" />
+                        </Hyperlink>-->
+                    </ContentControl>
+                </StackPanel>
+                
+
+
+            </Expander>
+            <TabControl ItemsSource="{Binding Tools}"
+                        Margin="4"
+                        Grid.Row="0"
+                        Grid.Column="1">
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <Button
+                                Command="{Binding Path=CloseCommand}"
+                                Content="X"
+                                DockPanel.Dock="Right"
+                                FontSize="8"
+                                Focusable="False"
+                                FontWeight="Bold"
+                                Margin="3, 0, 0, 0"/>
+                            <ContentPresenter Content="{Binding DisplayName}" />
+                        </DockPanel>
+                       
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+            </TabControl>
+
+        </Grid>
+    </DockPanel>
+
+</Window>

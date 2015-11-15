@@ -1,0 +1,216 @@
+﻿<WorkflowService mc:Ignorable="sap sap2010 sads" p:TextExpression.Namespaces="{x:Reference __ReferenceID4}" p:TextExpression.References="{x:Reference __ReferenceID5}" ConfigurationName="SimpleApproval" DefinitionIdentity="v1SimpleApplication; Version=1.0.0.0" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="WorkflowService_1" Name="SimpleApproval"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:pcvuwm="clr-namespace:PROWF45.CH06.VERSIONING.UPDATE.WORKFLOW.Model;assembly=PROWF45.CH06.VERSIONING.UPDATE.WORKFLOW"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ssx="clr-namespace:System.ServiceModel.XamlIntegration;assembly=System.ServiceModel"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Sequence DisplayName="Submit Application" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <p:TextExpression.Namespaces>
+      <sco:Collection x:TypeArguments="x:String" x:Name="__ReferenceID4">
+        <x:String>System</x:String>
+        <x:String>System.Collections.Generic</x:String>
+        <x:String>System.Data</x:String>
+        <x:String>System.Linq</x:String>
+        <x:String>System.Text</x:String>
+        <x:String>PROWF45.CH06.VERSIONING.UPDATE.WORKFLOW.Model</x:String>
+      </sco:Collection>
+    </p:TextExpression.Namespaces>
+    <p:TextExpression.References>
+      <sco:Collection x:TypeArguments="p:AssemblyReference" x:Name="__ReferenceID5">
+        <p:AssemblyReference>Microsoft.CSharp</p:AssemblyReference>
+        <p:AssemblyReference>System.Web.DynamicData</p:AssemblyReference>
+        <p:AssemblyReference>System.Drawing</p:AssemblyReference>
+        <p:AssemblyReference>System.Web.Entity</p:AssemblyReference>
+        <p:AssemblyReference>System.Web.ApplicationServices</p:AssemblyReference>
+        <p:AssemblyReference>System</p:AssemblyReference>
+        <p:AssemblyReference>System.Activities</p:AssemblyReference>
+        <p:AssemblyReference>System.Core</p:AssemblyReference>
+        <p:AssemblyReference>System.Data</p:AssemblyReference>
+        <p:AssemblyReference>System.Data.Entity</p:AssemblyReference>
+        <p:AssemblyReference>System.Runtime.Serialization</p:AssemblyReference>
+        <p:AssemblyReference>System.ServiceModel</p:AssemblyReference>
+        <p:AssemblyReference>System.ServiceModel.Activities</p:AssemblyReference>
+        <p:AssemblyReference>System.ServiceModel.Channels</p:AssemblyReference>
+        <p:AssemblyReference>System.Web</p:AssemblyReference>
+        <p:AssemblyReference>System.Xaml</p:AssemblyReference>
+        <p:AssemblyReference>System.Xml</p:AssemblyReference>
+        <p:AssemblyReference>System.Xml.Linq</p:AssemblyReference>
+        <p:AssemblyReference>mscorlib</p:AssemblyReference>
+        <p:AssemblyReference>PROWF45.CH06.VERSIONING.UPDATE.WORKFLOW</p:AssemblyReference>
+      </sco:Collection>
+    </p:TextExpression.References>
+    <p:Sequence.Variables>
+      <x:Reference>__ReferenceID3</x:Reference>
+      <p:Variable x:TypeArguments="x:String" Name="HoldApplicationId" />
+      <p:Variable x:TypeArguments="pcvuwm:TeachingApplication" Name="HoldApplication" />
+      <p:Variable x:TypeArguments="x:String" Name="retMessage" />
+      <p:Variable x:TypeArguments="x:Boolean" Name="holdApproval" />
+    </p:Sequence.Variables>
+    <Receive x:Name="__ReferenceID0" CanCreateInstance="True" sap2010:WorkflowViewState.IdRef="Receive_1" OperationName="SubmitApplication" ServiceContractName="IApproval">
+      <Receive.CorrelationInitializers>
+        <RequestReplyCorrelationInitializer>
+          <RequestReplyCorrelationInitializer.CorrelationHandle>
+            <p:InArgument x:TypeArguments="CorrelationHandle">
+              <p:VariableValue x:TypeArguments="CorrelationHandle">
+                <p:VariableValue.Variable>
+                  <p:Variable x:TypeArguments="CorrelationHandle" x:Name="__ReferenceID3" Name="handleApplicationId" />
+                </p:VariableValue.Variable>
+              </p:VariableValue>
+            </p:InArgument>
+          </RequestReplyCorrelationInitializer.CorrelationHandle>
+        </RequestReplyCorrelationInitializer>
+      </Receive.CorrelationInitializers>
+      <ReceiveParametersContent>
+        <p:OutArgument x:TypeArguments="pcvuwm:TeachingApplication" x:Key="NewApplication">
+          <mca:CSharpReference x:TypeArguments="pcvuwm:TeachingApplication">HoldApplication</mca:CSharpReference>
+        </p:OutArgument>
+      </ReceiveParametersContent>
+    </Receive>
+    <p:Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+      <p:Assign.To>
+        <p:OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">HoldApplicationId</mca:CSharpReference>
+        </p:OutArgument>
+      </p:Assign.To>
+      <p:Assign.Value>
+        <p:InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">new Random().Next(1, 100).ToString()</mca:CSharpValue>
+        </p:InArgument>
+      </p:Assign.Value>
+    </p:Assign>
+    <InitializeCorrelation sap2010:WorkflowViewState.IdRef="InitializeCorrelation_1">
+      <InitializeCorrelation.Correlation>
+        <p:InArgument x:TypeArguments="CorrelationHandle">
+          <mca:CSharpValue x:TypeArguments="CorrelationHandle">handleApplicationId</mca:CSharpValue>
+        </p:InArgument>
+      </InitializeCorrelation.Correlation>
+      <p:InArgument x:TypeArguments="x:String" x:Key="appId">
+        <mca:CSharpValue x:TypeArguments="x:String">HoldApplicationId</mca:CSharpValue>
+      </p:InArgument>
+    </InitializeCorrelation>
+    <SendReply Request="{x:Reference __ReferenceID0}" DisplayName="SendReplyToReceive" sap2010:WorkflowViewState.IdRef="SendReply_1">
+      <SendMessageContent DeclaredMessageType="x:String">
+        <p:InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">String.Format("Application {0} has been submitted!", HoldApplicationId)</mca:CSharpValue>
+        </p:InArgument>
+      </SendMessageContent>
+    </SendReply>
+    <p:Sequence DisplayName="Approve Application" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <p:Sequence.Variables>
+        <x:Reference>__ReferenceID2</x:Reference>
+      </p:Sequence.Variables>
+      <Receive x:Name="__ReferenceID1" CanCreateInstance="True" sap2010:WorkflowViewState.IdRef="Receive_2" OperationName="ApproveTeacher" ServiceContractName="IApproval">
+        <Receive.CorrelatesOn>
+          <XPathMessageQuery x:Key="appId">
+            <XPathMessageQuery.Namespaces>
+              <ssx:XPathMessageContextMarkup>
+                <x:String x:Key="xgSc">http://tempuri.org/</x:String>
+              </ssx:XPathMessageContextMarkup>
+            </XPathMessageQuery.Namespaces>sm:body()/xgSc:ApproveTeacher/xgSc:ApplicationId</XPathMessageQuery>
+        </Receive.CorrelatesOn>
+        <Receive.CorrelatesWith>
+          <p:InArgument x:TypeArguments="CorrelationHandle">
+            <mca:CSharpValue x:TypeArguments="CorrelationHandle">handleApplicationId</mca:CSharpValue>
+          </p:InArgument>
+        </Receive.CorrelatesWith>
+        <Receive.CorrelationInitializers>
+          <RequestReplyCorrelationInitializer>
+            <RequestReplyCorrelationInitializer.CorrelationHandle>
+              <p:InArgument x:TypeArguments="CorrelationHandle">
+                <p:VariableValue x:TypeArguments="CorrelationHandle">
+                  <p:VariableValue.Variable>
+                    <p:Variable x:TypeArguments="CorrelationHandle" x:Name="__ReferenceID2" Name="__handle1" />
+                  </p:VariableValue.Variable>
+                </p:VariableValue>
+              </p:InArgument>
+            </RequestReplyCorrelationInitializer.CorrelationHandle>
+          </RequestReplyCorrelationInitializer>
+        </Receive.CorrelationInitializers>
+        <ReceiveParametersContent>
+          <p:OutArgument x:TypeArguments="x:Int32" x:Key="ApplicationId" />
+          <p:OutArgument x:TypeArguments="x:Boolean" x:Key="Approval">
+            <mca:CSharpReference x:TypeArguments="x:Boolean">holdApproval</mca:CSharpReference>
+          </p:OutArgument>
+        </ReceiveParametersContent>
+      </Receive>
+      <p:If sap2010:WorkflowViewState.IdRef="If_1">
+        <p:If.Condition>
+          <p:InArgument x:TypeArguments="x:Boolean">
+            <mca:CSharpValue x:TypeArguments="x:Boolean">holdApproval &amp;&amp; HoldApplication.YearsOfExperience&gt;4</mca:CSharpValue>
+          </p:InArgument>
+        </p:If.Condition>
+        <p:If.Then>
+          <p:Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+            <p:Assign.To>
+              <p:OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String">retMessage</mca:CSharpReference>
+              </p:OutArgument>
+            </p:Assign.To>
+            <p:Assign.Value>
+              <p:InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String">String.Format("Application for {0} has been approved!", HoldApplication.FirstName + " " + HoldApplication.LastName)</mca:CSharpValue>
+              </p:InArgument>
+            </p:Assign.Value>
+          </p:Assign>
+        </p:If.Then>
+        <p:If.Else>
+          <p:Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+            <p:Assign.To>
+              <p:OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String">retMessage</mca:CSharpReference>
+              </p:OutArgument>
+            </p:Assign.To>
+            <p:Assign.Value>
+              <p:InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String">String.Format("Application for {0} has been rejected!", HoldApplication.FirstName + " " + HoldApplication.LastName)</mca:CSharpValue>
+              </p:InArgument>
+            </p:Assign.Value>
+          </p:Assign>
+        </p:If.Else>
+      </p:If>
+      <SendReply Request="{x:Reference __ReferenceID1}" DisplayName="SendReplyToReceive" sap2010:WorkflowViewState.IdRef="SendReply_2">
+        <SendMessageContent>
+          <p:InArgument x:TypeArguments="x:String">
+            <mca:CSharpValue x:TypeArguments="x:String">retMessage</mca:CSharpValue>
+          </p:InArgument>
+        </SendMessageContent>
+      </SendReply>
+    </p:Sequence>
+    <sads:DebugSymbol.Symbol>d4gBQzpcV29ya3NhcGNlXHJlcG9zXGRvdC5uZXQgZGV2ZWxvcG1lbnRcV29ya2Zsb3dGb3VuZGF0aW9uLjQwLjQ1LkRldmVsb3BtZW50XFBST1dGNDUuQ0gwNi5WRVJTSU9OSU5HLlVQREFURS5XT1JLRkxPV1xTaW1wbGVBcHByb3ZhbC54YW1seBsOA7sBEAEBOAVLDwFmTAVXEAFZWAVhHQFMYgVoEQFDaQW5ARIBAkgLSHIBaD0PQSEBZ1QLVG0BYE8LT2IBWl8JX1gBU1sLW2UBTWULZZABAURtB44BEQEzjwEHsQEOAQ2yAQe4ARMBA3gNeGcBPIsBDYsBYAE1fxGDASMBNJIBDZIBigEBDpYBC6EBFgEkpAELrwEWARW1AQ21AVUBBJ4BEZ4BwgEBLJkBEZkBYQElrAERrAHCAQEdpwERpwFhARY=</sads:DebugSymbol.Symbol>
+  </p:Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Receive_1" sap:VirtualizedContainerService.HintSize="532.8,92.8" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="532.8,62.4" />
+      <sap2010:ViewStateData Id="InitializeCorrelation_1" sap:VirtualizedContainerService.HintSize="532.8,99.2" />
+      <sap2010:ViewStateData Id="SendReply_1" sap:VirtualizedContainerService.HintSize="532.8,92.8" />
+      <sap2010:ViewStateData Id="Receive_2" sap:VirtualizedContainerService.HintSize="510.4,92.8" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="243.2,62.4" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="243.2,62.4" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="510.4,214.4" />
+      <sap2010:ViewStateData Id="SendReply_2" sap:VirtualizedContainerService.HintSize="510.4,92.8" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="532.8,604.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="555.2,1236.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="585.6,1307.2" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</WorkflowService>

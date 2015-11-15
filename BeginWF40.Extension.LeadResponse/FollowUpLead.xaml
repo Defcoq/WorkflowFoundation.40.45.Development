@@ -1,0 +1,70 @@
+﻿<Window x:Class="LeadResponse.FollowUpLead"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Follow Up Lead" Height="350" Width="525" Loaded="Window_Loaded" Unloaded="Window_Unloaded">
+    <Grid MinWidth="300" MinHeight="100" Width="514">
+        <ListView x:Name="lstLeads" Margin="10,12,10,0" Height="145" 
+         VerticalAlignment="Top" ItemsSource="{Binding}" 
+         HorizontalContentAlignment="Center"
+         SelectionChanged="lstLeads_SelectionChanged" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Current Leads" Width="480">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Lead.ContactName}" 
+                                     Width="110"/>
+                                    <TextBlock Text="{Binding Lead.ContactPhone}" 
+                                     Width="70"/>
+                                    <TextBlock Text="{Binding Lead.Interests}" 
+                                     Width="130"/>
+                                    <TextBlock Text="{Binding Status}" 
+                                     Width="70"/>
+                                    <TextBlock Text="{Binding AssignedTo}" 
+                                     Width="100"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Height="37" Margin="12,163,3,0" 
+         Name="lblSelectedNotes" VerticalAlignment="Top" Visibility="Hidden" />
+
+        <Label Height="28" Margin="12,190,0,0" Width="60" Content="Assigned:"
+         Name="lblAssigned" VerticalAlignment="Top" 
+         HorizontalAlignment="Left" HorizontalContentAlignment="Right" />
+        <Label Height="28" Margin="12,220,0,0" Width="60" Content="Due:"
+         Name="lblDue" VerticalAlignment="Top" 
+         HorizontalAlignment="Left" HorizontalContentAlignment="Right" />
+        <Label Height="28" Margin="12,250,0,0" Width="60" Content="Complete:"
+         Name="lblComplete" VerticalAlignment="Top" 
+         HorizontalAlignment="Left" HorizontalContentAlignment="Right" />
+
+        <Label Height="28" Margin="82,190,0,0" Width="100" 
+         Name="lblDateAssigned" VerticalAlignment="Top" 
+         HorizontalAlignment="Left" />
+        <Label Height="28" Margin="82,220,0,0" Width="100" 
+         Name="lblDateDue" VerticalAlignment="Top" 
+         HorizontalAlignment="Left" />
+        <Label Height="28" Margin="82,250,0,0" Width="100" 
+         Name="lblDateCompleted" VerticalAlignment="Top" 
+         HorizontalAlignment="Left" />
+
+        <Label Height="28" Margin="200,200,0,0" Width="60" Content="Remarks:"
+         Name="lblRemarks" VerticalAlignment="Top" HorizontalAlignment="Left" />
+        <TextBox Height="100" HorizontalAlignment="Stretch" Margin="200,220,10,0" 
+         Name="txtRemarks" VerticalAlignment="Top"  />
+        <Button Height="25" Margin="100,290,0,0" Name="btnComplete" 
+         VerticalAlignment="Top" HorizontalAlignment="Left" Width="90" 
+         Click="btnComplete_Click" >Complete</Button>
+
+        <Label Height="27" HorizontalAlignment="Left" Margin="10,0,0,140" 
+         Name="lblEvent" VerticalAlignment="Bottom" Width="76">Event Log</Label>
+        <ListBox Margin="12,0,5,12" Name="lstEvents" Height="135" 
+         VerticalAlignment="Bottom" FontStretch="Condensed" FontSize="10" 
+         FontFamily="Tahoma" />
+    </Grid>
+</Window>

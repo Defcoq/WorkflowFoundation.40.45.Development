@@ -1,0 +1,104 @@
+﻿<Activity mc:Ignorable="sads sap sap2010" x:Class="BeginWF40.Comunication.BookLkp.Client.Workflow1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:local="clr-namespace:BeginWF40.Comunication.BookLkp.Client.ServiceReference2"
+ xmlns:local1="clr-namespace:BeginWF40.Comunication.BookLkp.Client.ServiceReference2.Activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:sc="clr-namespace:System.ComponentModel;assembly=System"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:srs="clr-namespace:System.Runtime.Serialization;assembly=System.Runtime.Serialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="argAuthor" Type="InArgument(x:String)" />
+    <x:Property Name="argTitle" Type="InArgument(x:String)" />
+    <x:Property Name="argISBN" Type="InArgument(x:String)" />
+    <x:Property Name="argBookList" Type="OutArgument(local:BookInfo[])" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>BeginWF40.Comunication.BookLkp.Client.Workflow1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>BeginWF40.Comunication.BookLkp.Client.ServiceReference2</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>BeginWF40.Comunication.BookLkp.Client</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Pick sap2010:WorkflowViewState.IdRef="Pick_1">
+    <PickBranch DisplayName="Branch1" sap2010:WorkflowViewState.IdRef="PickBranch_1">
+      <PickBranch.Trigger>
+        <local1:LookupBookParameter sap2010:WorkflowViewState.IdRef="LookupBookParameter_2" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
+          <local1:LookupBookParameter.Author>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String">argAuthor</mca:CSharpValue>
+            </InArgument>
+          </local1:LookupBookParameter.Author>
+          <local1:LookupBookParameter.ISBN>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String">argISBN</mca:CSharpValue>
+            </InArgument>
+          </local1:LookupBookParameter.ISBN>
+          <local1:LookupBookParameter.Result>
+            <OutArgument x:TypeArguments="local:BookInfo[]">
+              <mca:CSharpReference x:TypeArguments="local:BookInfo[]">argBookList</mca:CSharpReference>
+            </OutArgument>
+          </local1:LookupBookParameter.Result>
+          <local1:LookupBookParameter.Title>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String">argTitle</mca:CSharpValue>
+            </InArgument>
+          </local1:LookupBookParameter.Title>
+        </local1:LookupBookParameter>
+      </PickBranch.Trigger>
+      <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="The service completed" />
+    </PickBranch>
+    <PickBranch DisplayName="Branch2" sap2010:WorkflowViewState.IdRef="PickBranch_2">
+      <PickBranch.Trigger>
+        <Delay sap2010:WorkflowViewState.IdRef="Delay_1">
+          <InArgument x:TypeArguments="x:TimeSpan">
+            <mca:CSharpValue x:TypeArguments="x:TimeSpan">TimeSpan.FromSeconds(5)</mca:CSharpValue>
+          </InArgument>
+        </Delay>
+      </PickBranch.Trigger>
+      <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="The service timeout man  " />
+    </PickBranch>
+    <sads:DebugSymbol.Symbol>d4ABQzpcV29ya3NhcGNlXHJlcG9zXGRvdC5uZXQgZGV2ZWxvcG1lbnRcV29ya2Zsb3dGb3VuZGF0aW9uLjQwLjQ1LkRldmVsb3BtZW50XEJlZ2luV0Y0MC5Db211bmljYXRpb24uQm9va0xrcC5DbGllbnRcV29ya2Zsb3cxLnhhbWwONANbCgIBATUFTxICAQtQBVkSAgECNwlMJgIBDk4HTl8CAQxSCVYRAgEFWAdYYwIBAzoPOlYCAR4/Dz9UAgEZRA9EaAIBFEkPSVUCAQ9ORU5cAgENVA1UZAIBBlhFWGACAQQ=</sads:DebugSymbol.Symbol>
+  </Pick>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="LookupBookParameter_2" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="211.2,62.4" />
+      <sap2010:ViewStateData Id="PickBranch_1" sap:VirtualizedContainerService.HintSize="241.6,321.6" />
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="211.2,62.4" />
+      <sap2010:ViewStateData Id="PickBranch_2" sap:VirtualizedContainerService.HintSize="241.6,321.6" />
+      <sap2010:ViewStateData Id="Pick_1" sap:VirtualizedContainerService.HintSize="636.8,368" />
+      <sap2010:ViewStateData Id="BeginWF40.Comunication.BookLkp.Client.Workflow1_1" sap:VirtualizedContainerService.HintSize="676.8,448" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
